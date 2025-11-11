@@ -1,0 +1,152 @@
+import React from "react";
+import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+
+export default function Onboarding3({ navigation }: any) {
+  return (
+    <View style={styles.container}>
+      {/* IMAGES SECTION */}
+      <View style={styles.imagesContainer}>
+        <Image
+          source={require("../../../assets/images/oimg1.jpg")} 
+          style={[styles.image, styles.imageTop]}
+        />
+        <Image
+          source={require("../../../assets/images/oimg2.jpg")}
+          style={[styles.image, styles.imageBottom]}
+        />
+      </View>
+
+      {/* PAGE INDICATOR */}
+      <View style={styles.indicatorContainer}>
+        <View style={styles.dotInactive} />
+        <View style={styles.dotActive} />
+        <View style={styles.dotInactive} />
+      </View>
+
+      {/* TEXT SECTION */}
+      <Text style={styles.title}>Tasty Meals,{'\n'}Smarter Choices</Text>
+      <Text style={styles.subtitle}>
+        Help reduce food waste by enjoying perfectly good leftover meals at a
+        discount.
+      </Text>
+
+    <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('Signup')}>
+      <Text style={styles.primaryBtnText}>Registration</Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.secondaryBtn}  onPress={() => navigation.navigate('Login')}>
+      <Text style={styles.secondaryBtnText}>Login</Text>
+    </TouchableOpacity>
+  </View>
+);
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    paddingHorizontal: 25,
+    paddingTop: 60,
+    alignItems: "center",
+  },
+  imagesContainer: {
+    width: 285,
+    height: 267,
+    alignItems: "center",
+    justifyContent: "center",
+    position: "relative",
+    backgroundColor: "rgba(184, 254, 34, 0.17)",
+    borderRadius: 20,
+  },
+  image: {
+    width: 180,
+    height: 180,
+    borderRadius: 20,
+   
+    
+  },
+  imageTop: {
+    position: "absolute",
+    top: -30,
+    left: -40,
+    transform: [{ rotate: "-10deg" }],
+    height: 279.2,
+    width: 213.19,
+    borderRadius: 20,
+    
+  },
+  imageBottom: {
+    position: "absolute",
+    bottom: -100,
+    right: -50,
+    width: 207,
+    height: 301,
+  },
+  indicatorContainer: {
+    flexDirection: "row",
+    marginTop: 150,
+  },
+  dotActive: {
+    width: 36,
+    height: 7,
+    borderRadius: 4,
+    marginHorizontal: 6,
+    backgroundColor: "rgba(184, 254, 34, 1)",
+  },
+  dotInactive: {
+    width: 10,
+    height: 7,
+    borderRadius: 4,
+    marginHorizontal: 6,
+    backgroundColor: "rgba(217, 217, 217, 1)",
+  },
+  title: {
+    textAlign: "center",
+    fontSize: 32,
+    fontWeight: "700",
+    marginTop: 30,
+    color: "rgba(55, 73, 87, 1)",
+    fontFamily: "Inter"
+  },
+  subtitle: {
+    textAlign: "center",
+    fontSize: 20,
+    color: "rgba(55, 73, 87, 1)",
+    marginTop: 12,
+    lineHeight: 20,
+    paddingHorizontal: 10,
+    fontFamily: "Inter"
+  },
+
+  primaryBtn: {
+    backgroundColor: "rgba(184, 254, 34, 1)",
+    width: 391,
+    height: 68,
+    borderRadius: 100,
+    alignItems: "center",
+    paddingVertical: 16,
+    marginBottom: 12,
+    marginTop: 5,
+  },
+  primaryBtnText: {
+    color: "rgba(55, 73, 87, 1)",
+    fontWeight: 700,
+    fontSize: 20,
+    fontFamily: "Inter",
+    bottom: -2,
+  },
+  secondaryBtn: {
+    backgroundColor: "rgba(245, 245, 245, 1)",
+    width: 391,
+    borderRadius: 100,
+    alignItems: "center",
+    paddingVertical: 16,
+    marginBottom: 6,
+  },
+  secondaryBtnText: {
+    color: "rgba(55, 73, 87, 1)",
+    fontWeight: "400",
+    fontSize: 20,
+    fontFamily: "Inter"
+  },
+});
