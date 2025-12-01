@@ -25,10 +25,13 @@ const TrackingScreen = () => {
       {/* Header */}
       <View style={styles.headerRow}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={styles.backArrow}>‹</Text>
+          <Image 
+            source={require("../../../assets/icons/back.png")} 
+            style={styles.backArrowIcon}
+          />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Tracking</Text>
-        <View style={{ width: 32 }} />
+        <View style={{ width: 24 }} />
       </View>
 
       {/* Track Card */}
@@ -121,19 +124,24 @@ const styles = StyleSheet.create({
   headerRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 13,
-    marginTop: 10,
+    justifyContent: "space-between",
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    height: 60,
   },
-  backArrow: {
-    fontSize: 32,
-    color: "#101C2A",
+  backArrowIcon: {
+    width: 20,
+    height: 20,
+    tintColor: "#1c1c1c",
+    resizeMode: "contain",
   },
   headerTitle: {
     flex: 1,
     textAlign: "center",
-    fontSize: 16,
-    color: "#949CA6",
-    marginLeft: -32,
+    fontSize: 20,
+    fontWeight: "600",
+    color: "rgba(55, 73, 87, 1)",
+    marginLeft: -24,
   },
 
   trackCard: {

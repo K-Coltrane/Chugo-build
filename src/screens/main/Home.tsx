@@ -20,6 +20,7 @@ type RootStackParamList = {
   Checkout: undefined;
   Orders: undefined;
   Menu: undefined;
+  FilterScreen: undefined;
   FoodDetail: { meal: any }; // <-- Add params for FoodDetail
 };
 
@@ -80,7 +81,7 @@ const Home = () => {
                 style={styles.searchIconImg}
               />
             </View>
-            <TouchableOpacity style={styles.filterBox}>
+            <TouchableOpacity style={styles.filterBox} onPress={() => navigation.navigate("FilterScreen")}>
               <Image
                 source={require("../../../assets/icons/filter.png")}
                 style={styles.filterIconImg}

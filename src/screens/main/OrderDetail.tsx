@@ -1,7 +1,9 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const OrderDetail = ({ navigation }: { navigation: any }) => {
+const OrderDetail = () => {
+  const navigation = useNavigation();
   // Dummy order data -- replace with real data or props if needed
   const order = {
     name: "Beef sauce and goat",
@@ -16,11 +18,14 @@ const OrderDetail = ({ navigation }: { navigation: any }) => {
     <View style={{ flex: 1, backgroundColor: "#f6f6f6" }}>
       {/* HEADER */}
       <View style={styles.headerRow}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
-          <Text style={styles.backBtnText}>←</Text>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image 
+            source={require("../../../assets/icons/back.png")} 
+            style={styles.backArrowIcon}
+          />
         </TouchableOpacity>
         <Text style={styles.header}>Tracking</Text>
-        <View style={styles.headerRightSpace} />
+        <View style={{ width: 24 }} />
       </View>
       
       {/* CARD */}
@@ -102,7 +107,7 @@ const OrderDetail = ({ navigation }: { navigation: any }) => {
       </View>
 
       {/* VERIFY BUTTON */}
-      <TouchableOpacity style={styles.verifyBtn}  onPress={() => {navigation.navigate("VerifyScreen") }}>
+      <TouchableOpacity style={styles.verifyBtn}  onPress={() => {(navigation as any).navigate("VerifyScreen") }}>
         <Text style={styles.verifyBtnText}>Verify</Text>
       </TouchableOpacity>
     </View>
@@ -115,15 +120,25 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 10,
-    paddingTop: 18,
-    paddingBottom: 8,
-    marginBottom: 0,
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    height: 60,
+    backgroundColor: "#f6f6f6",
   },
-  backBtn: { padding: 4, paddingRight: 10, minWidth: 40 },
-  backBtnText: { fontSize: 26, fontWeight: "600", color: "#374957" },
-  header: { fontSize: 20, fontWeight: "400", color: "rgba(55, 73, 87, 1)", textAlign: "center", flex: 1 , fontFamily: "Inter"},
-  headerRightSpace: { width: 40 },
+  backArrowIcon: {
+    width: 20,
+    height: 20,
+    tintColor: "#1c1c1c",
+    resizeMode: "contain",
+  },
+  header: { 
+    flex: 1,
+    fontSize: 20, 
+    fontWeight: "600", 
+    color: "rgba(55, 73, 87, 1)", 
+    textAlign: "center",
+    marginLeft: -24,
+  },
 
   cardOuter: {
     backgroundColor: "rgba(255, 255, 255, 1)",

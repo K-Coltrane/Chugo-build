@@ -21,10 +21,6 @@ const TAB_ICONS = [
   { key: "menu", label: "Menu", route: "Menu", icon: require("../../../assets/icons/menu.png") },
 ];
 
-const BackArrow = () => (
-  <Text style={{ fontSize: 22, fontWeight: "bold", marginRight: 12 }}>←</Text>
-);
-
 const TermsScreen: React.FC = () => {
   const navigation = useNavigation();
   const [menuVisible, setMenuVisible] = useState(false);
@@ -45,10 +41,13 @@ const TermsScreen: React.FC = () => {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <BackArrow />
+          <Image 
+            source={require("../../../assets/icons/back.png")} 
+            style={styles.backArrowIcon}
+          />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Terms & Conditions</Text>
-        <View style={{ width: 22 }} /> {/* placeholder */}
+        <View style={{ width: 24 }} />
       </View>
 
       {/* Content */}
@@ -101,15 +100,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: "#f8f8f8",
+    paddingHorizontal: 18,
+    height: 60,
+  },
+  backArrowIcon: {
+    width: 20,
+    height: 20,
+    tintColor: "#1c1c1c",
+    resizeMode: "contain",
   },
   headerTitle: {
+    flex: 1,
     fontSize: 20,
-    fontWeight: "400",
+    fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
-    fontFamily: "Inter",
+    textAlign: "center",
+    marginLeft: -24,
   },
 
   // Card

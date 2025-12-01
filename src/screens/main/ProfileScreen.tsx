@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { 
-  View, Text, StyleSheet, TextInput, Image, TouchableOpacity, SafeAreaView 
+  View, Text, StyleSheet, TextInput, Image, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView
 } from "react-native";
 import { useNavigation } from "@react-navigation/native"; // <-- Import added
 import MenuModal from "../../components/MenuModal";
@@ -38,74 +38,90 @@ const ProfileScreen = () => {
     <SafeAreaView style={styles.safeArea}>
       {/* Header */}
       <View style={styles.headerRow}>
-        <TouchableOpacity>
-          <Text style={styles.backArrow}>←</Text>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image 
+            source={require("../../../assets/icons/back.png")} 
+            style={styles.backArrowIcon}
+          />
         </TouchableOpacity>
         <Text style={styles.profileTitle}>Profile</Text>
         <View style={{ width: 24 }} />
       </View>
 
-      {/* Avatar */}
-      <View style={styles.avatarBox}>
-        <Image
-          source={{ uri: "https://randomuser.me/api/portraits/men/1.jpg" }}
-          style={styles.avatarImg}
-        />
-        <TouchableOpacity style={styles.avatarCircle}>
-          <Image
-            source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Pencil_icon.png" }}
-            style={styles.editIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      {/* Form */}
-      <View style={styles.formGroup}>
-        <Text style={styles.label}>Full name</Text>
-        <TextInput
-          style={[styles.input, styles.inputActive]}
-          value={name}
-          onChangeText={setName}
-          placeholder="Full name"
-        />
-        <Text style={styles.label}>Email</Text>
-        <TextInput
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-          placeholder="Email"
-          keyboardType="email-address"
-        />
-        <Text style={styles.label}>Phone number</Text>
-        <View style={styles.phoneRow}>
-          <View style={styles.flagBox}>
+      <KeyboardAvoidingView 
+        style={styles.keyboardView}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0}
+      >
+        <ScrollView 
+          style={styles.scrollView}
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+        >
+          {/* Avatar */}
+          <View style={styles.avatarBox}>
             <Image
-              source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Ghana.png" }}
-              style={styles.flagIcon}
+              source={{ uri: "https://randomuser.me/api/portraits/men/1.jpg" }}
+              style={styles.avatarImg}
             />
-            <Text style={styles.flagText}>+233</Text>
+            <TouchableOpacity style={styles.avatarCircle}>
+              <Image
+                source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Pencil_icon.png" }}
+                style={styles.editIcon}
+              />
+            </TouchableOpacity>
           </View>
-          <TextInput
-            style={[styles.input, styles.inputPhone]}
-            placeholder="Number"
-            value={phone}
-            onChangeText={setPhone}
-            keyboardType="phone-pad"
-          />
-        </View>
-        <Text style={styles.label}>Date of Birth</Text>
-        <TextInput
-          style={styles.input}
-          value={dob}
-          onChangeText={setDob}
-          placeholder="Date of Birth"
-        />
-      </View>
 
-      {/* Save Button */}
-      <TouchableOpacity style={styles.saveBtn}>
-        <Text style={styles.saveBtnText}>Save</Text>
-      </TouchableOpacity>
+          {/* Form */}
+          <View style={styles.formGroup}>
+            <Text style={styles.label}>Full name</Text>
+            <TextInput
+              style={[styles.input, styles.inputActive]}
+              value={name}
+              onChangeText={setName}
+              placeholder="Full name"
+            />
+            <Text style={styles.label}>Email</Text>
+            <TextInput
+              style={styles.input}
+              value={email}
+              onChangeText={setEmail}
+              placeholder="Email"
+              keyboardType="email-address"
+            />
+            <Text style={styles.label}>Phone number</Text>
+            <View style={styles.phoneRow}>
+              <View style={styles.flagBox}>
+                <Image
+                  source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Ghana.png" }}
+                  style={styles.flagIcon}
+                />
+                <Text style={styles.flagText}>+233</Text>
+              </View>
+              <TextInput
+                style={[styles.input, styles.inputPhone]}
+                placeholder="Number"
+                value={phone}
+                onChangeText={setPhone}
+                keyboardType="phone-pad"
+              />
+            </View>
+            <Text style={styles.label}>Date of Birth</Text>
+            <TextInput
+              style={styles.input}
+              value={dob}
+              onChangeText={setDob}
+              placeholder="Date of Birth"
+            />
+          </View>
+
+          {/* Save Button */}
+          <TouchableOpacity style={styles.saveBtn}>
+            <Text style={styles.saveBtnText}>Save</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </KeyboardAvoidingView>
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
@@ -148,8 +164,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     height: 60,
   },
-  backArrow: { fontSize: 23, color: "#1c1c1c", fontWeight: "bold", paddingRight: 2 },
-  profileTitle: { fontSize: 20, fontWeight: "600", color: "rgba(55, 73, 87, 1)", textAlign: "center" },
+  backArrowIcon: {
+    width: 20,
+    height: 20,
+    tintColor: "#1c1c1c",
+    resizeMode: "contain",
+  },
+  profileTitle: { 
+    flex: 1,
+    fontSize: 20, 
+    fontWeight: "600", 
+    color: "rgba(55, 73, 87, 1)", 
+    textAlign: "center",
+    marginLeft: -24,
+  },
+  keyboardView: {
+    flex: 1,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
+    paddingBottom: 100,
+  },
 
   avatarBox: {
     alignItems: "center",

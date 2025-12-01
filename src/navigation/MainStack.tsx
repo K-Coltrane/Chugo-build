@@ -18,6 +18,7 @@ import PaymentScreen from "../screens/main/PaymentScreen.tsx"
 import RatingScreen from "../screens/main/RatingScreen.tsx"
 import TrackingScreen from "../screens/main/Tracking.tsx"
 import VerifyScreen from "../screens/main/VerifyScreen.tsx"
+import FilterScreen from "../screens/main/FilterScreen.tsx"
 // ... import other main app screens as needed
 
 const Stack = createNativeStackNavigator();
@@ -41,6 +42,7 @@ const MainStack = () => {
       <Stack.Screen name="RatingScreen" component ={RatingScreen} />
      <Stack.Screen name="VerifyScreen" component ={VerifyScreen} />
      <Stack.Screen name="TrackingScreen" component ={TrackingScreen} />
+     <Stack.Screen name="FilterScreen" component ={FilterScreen} />
       {/* Add any other screens in your main user app */}
     </Stack.Navigator>
   );

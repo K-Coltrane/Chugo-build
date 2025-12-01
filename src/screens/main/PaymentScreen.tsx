@@ -8,9 +8,11 @@ import {
   StyleSheet,
   Modal,
   Pressable,
+  Image,
   TouchableWithoutFeedback,
   Platform,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 interface PaymentMethod {
   id: string;
@@ -26,7 +28,8 @@ const initialMethods: PaymentMethod[] = [
   { id: "mastercard", type: "Credit", label: "MC", card: "**** **** **** 5633" },
 ];
 
-const PaymentScreen: React.FC = ({ navigation }: any) => {
+const PaymentScreen: React.FC = () => {
+  const navigation = useNavigation();
   const [selected, setSelected] = useState<"delivery" | "pickup">("delivery");
   const [momoModalVisible, setMomoModalVisible] = useState(false);
   const [cardModalVisible, setCardModalVisible] = useState(false);
@@ -78,15 +81,6 @@ const PaymentScreen: React.FC = ({ navigation }: any) => {
     }
   };
 
-  // Navigation handler for back button
-  const handleBack = () => {
-    if (navigation && navigation.goBack) {
-      navigation.goBack();
-    } else {
-      console.log("Back button pressed");
-    }
-  };
-
   // Handler for "Order Panel" navigation
   const goToOrder = () => {
     setOrderModalVisible(false);
@@ -102,11 +96,14 @@ const PaymentScreen: React.FC = ({ navigation }: any) => {
       <View style={styles.container}>
         {/* Header Row */}
         <View style={styles.headerRow}>
-          <TouchableOpacity style={styles.backBtn} onPress={handleBack}>
-            <Text style={styles.backBtnText}>←</Text>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image 
+              source={require("../../../assets/icons/back.png")} 
+              style={styles.backArrowIcon}
+            />
           </TouchableOpacity>
           <Text style={styles.header}>Payment</Text>
-          <View style={styles.headerRightSpace} />
+          <View style={{ width: 24 }} />
         </View>
 
         {/* Delivery Card */}
@@ -373,35 +370,27 @@ const styles = StyleSheet.create({
     backgroundColor: "#f6f6f6" 
   },
 
-  headerRow: { 
-    flexDirection: "row", 
-    alignItems: "center", 
+  headerRow: {
+    flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 15 
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    height: 60,
   },
-
-  backBtn: { 
-    padding: 4, 
-    paddingRight: 12, 
-    minWidth: 40 
+  backArrowIcon: {
+    width: 20,
+    height: 20,
+    tintColor: "#1c1c1c",
+    resizeMode: "contain",
   },
-
-  backBtnText: { 
-    fontSize: 26, 
-    fontWeight: "600", 
-    color: "#374957" 
-  },
-
   header: { 
     flex: 1,
     fontSize: 20, 
-    fontWeight: "400", 
-    textAlign: "center", 
-    color: "#374957" 
-  },
-
-  headerRightSpace: { 
-    width: 40 
+    fontWeight: "600", 
+    color: "rgba(55, 73, 87, 1)", 
+    textAlign: "center",
+    marginLeft: -24,
   },
 
   card: { 

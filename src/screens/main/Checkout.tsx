@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, FlatList, SafeAreaView, Modal } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
 
 type CartItem = {
@@ -13,10 +14,6 @@ type CartItem = {
 type RootStackParamList = {
   Orders: undefined;
 };
-
-interface CheckoutProps {
-  navigation: any; // Replace 'any' with proper navigation prop if wanted
-}
 
 const cartItemsInitial: CartItem[] = [
   {
@@ -35,7 +32,8 @@ const cartItemsInitial: CartItem[] = [
   },
 ];
 
-const Checkout: React.FC<CheckoutProps> = ({ navigation }) => {
+const Checkout: React.FC = () => {
+  const navigation = useNavigation();
   const [cartItems, setCartItems] = useState<CartItem[]>(cartItemsInitial);
   const [promo, setPromo] = useState<string>("");
 

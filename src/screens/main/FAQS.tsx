@@ -52,10 +52,13 @@ const FAQScreen = () => {
         {/* Header */}
         <View style={styles.headerRow}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={styles.backArrow}>←</Text>
+            <Image 
+              source={require("../../../assets/icons/back.png")} 
+              style={styles.backArrowIcon}
+            />
           </TouchableOpacity>
           <Text style={styles.pageTitle}>FAQ's</Text>
-          <View style={{ width: 28 }} />
+          <View style={{ width: 24 }} />
         </View>
 
         {/* FAQ list */}
@@ -121,15 +124,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 16,
     paddingVertical: 12,
+    paddingHorizontal: 18,
+    height: 60,
   },
-  backArrow: {
-    fontSize: 23,
-    fontWeight: "bold",
-    color: "#1c1c1c",
+  backArrowIcon: {
+    width: 20,
+    height: 20,
+    tintColor: "#1c1c1c",
+    resizeMode: "contain",
   },
   pageTitle: {
+    flex: 1,
+    textAlign: "center",
+    marginLeft: -24,
     fontSize: 20,
     fontWeight: "400",
     color: "rgba(55, 73, 87, 1)",

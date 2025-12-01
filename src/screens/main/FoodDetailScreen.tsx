@@ -121,10 +121,13 @@ const FoodDetailScreen = () => {
       {/* HEADER */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={{ fontSize: 28, color: "#222" }}>←</Text>
+          <Image 
+            source={require("../../../assets/icons/back.png")} 
+            style={styles.backArrowIcon}
+          />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Chugo</Text>
-        <View style={{ width: 32 }} />
+        <View style={{ width: 24 }} />
       </View>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 180 }}>
         {/* --- IMAGE CARD + PROGRESS DOTS --- */}
@@ -294,16 +297,25 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 24,
-    paddingTop: 18,
     justifyContent: "space-between",
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    height: 60,
     backgroundColor: "rgba(246, 246, 246, 1)",
-    marginBottom: 2,
+  },
+  backArrowIcon: {
+    width: 20,
+    height: 20,
+    tintColor: "#1c1c1c",
+    resizeMode: "contain",
   },
   headerTitle: {
-    fontSize: 22,
-    fontWeight: "500",
+    flex: 1,
+    fontSize: 20,
+    fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
+    textAlign: "center",
+    marginLeft: -24,
   },
   imageCardWrapper: {
     alignItems: "center",

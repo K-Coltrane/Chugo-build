@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather'; // or any icon set
 
-const RatingScreen = ({ navigation }) => {
+const RatingScreen = () => {
+  const navigation = useNavigation();
   const [rating, setRating] = React.useState(2);
   const stars = [1, 2, 3, 4, 5];
 
