@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Platform } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 
-  import userIcon from "../../../assets/icons/user_icon.png";
+  import userIcon from "../../../assets/icons/profile.png";
   import phoneIcon from "../../../assets/icons/phone_icon.png";
   import emailIcon from "../../../assets/icons/mail_icon.png";
   import lockIcon from "../../../assets/icons/password_icon.png";

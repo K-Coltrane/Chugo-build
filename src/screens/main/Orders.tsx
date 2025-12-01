@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, SafeAreaView } from "react-native";
+import MenuModal from '../../components/MenuModal';
+import SwipeBackWrapper from "../../components/SwipeBackWrapper";
 
-// Dummy order data
 const orders = [
   {
     id: "1",
@@ -20,61 +21,71 @@ const orders = [
 ];
 
 const TAB_ICONS = [
-  { key: "home", label: "Home", emoji: "🏡" },
-  { key: "notification", label: "Notification", emoji: "🔔" },
-  { key: "checkout", label: "Checkout", emoji: "🛒" },
-  { key: "orders", label: "Orders", emoji: "📦" },
-  { key: "menu", label: "Menu", emoji: "☰" },
+  { key: "home", label: "Home", route: "Home", icon: require("../../../assets/icons/home.png") },
+  { key: "notification", label: "Notification", route: "Notification", icon: require("../../../assets/icons/notification.png") },
+  { key: "checkout", label: "Checkout", route: "Checkout", icon: require("../../../assets/icons/checkout.png") },
+  { key: "orders", label: "Orders", route: "Orders", icon: require("../../../assets/icons/orders.png") },
+  { key: "menu", label: "Menu", route: "Menu", icon: require("../../../assets/icons/menu.png") },
 ];
 
-const ChugoOrdersScreen = ({ navigation }: any) => {
+const Orders = ({ navigation }: { navigation: any }) => {
+
+  const [menuVisible, setMenuVisible] = useState(false);
+
   return (
+    <SwipeBackWrapper>
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        {/* Header Row */}
         <View style={styles.headerRow}>
           <TouchableOpacity>
             <Text style={styles.backArrow}>‹</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Chugo orders</Text>
         </View>
-
         <Text style={styles.sectionTitle}>My</Text>
         <Text style={styles.sectionSubtitle}>Chugo orders</Text>
-
-        {/* Orders List */}
         <FlatList
           data={orders}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <View style={styles.orderCard}>
-              <Image source={item.image} style={styles.orderImage} />
-              <View style={styles.orderDetails}>
-                <Text style={styles.orderName}>{item.name}</Text>
-                <Text style={styles.orderPrice}>{item.price}</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('OrderDetail', { orderId: item.id })}>
+              <View style={styles.orderCard}>
+                <Image source={item.image} style={styles.orderImage} />
+                <View style={styles.orderDetails}>
+                  <Text style={styles.orderName}>{item.name}</Text>
+                  <Text style={styles.orderPrice}>{item.price}</Text>
+                </View>
+                <Text style={styles.orderNo}>#{item.orderNo}</Text>
               </View>
-              <Text style={styles.orderNo}>#{item.orderNo}</Text>
-            </View>
+            </TouchableOpacity>
           )}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 100 }}
         />
-
-        {/* Bottom Tab Bar */}
         <View style={styles.bottomNav}>
-          {TAB_ICONS.map(tab => (
-            <TouchableOpacity key={tab.key} style={styles.tabItem}>
-              <Text style={styles.tabIcon}>{tab.emoji}</Text>
+          {TAB_ICONS.map((tab) => (
+            <TouchableOpacity
+              key={tab.key}
+              style={styles.tabItem}
+              onPress={
+                tab.key === "menu"
+                  ? () => setMenuVisible(true)
+                  : () => navigation.navigate(tab.route)
+              }
+            >
+              <Image source={tab.icon} style={styles.tabIconImg} />
               <Text style={styles.tabLabel}>{tab.label}</Text>
             </TouchableOpacity>
           ))}
         </View>
+        <MenuModal visible={menuVisible} onClose={() => setMenuVisible(false)} />
       </View>
     </SafeAreaView>
+    </SwipeBackWrapper>
   );
 };
 
-export default ChugoOrdersScreen;
+export default Orders;
 
 const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: "#F8F9FA" },
@@ -82,7 +93,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 14,
     paddingTop: 6,
-    backgroundColor: "#F8F9FA",
+    backgroundColor: "rgba(246, 246, 246, 1)",
   },
   headerRow: {
     flexDirection: "row",
@@ -100,21 +111,22 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
     fontSize: 16,
-    color: "#949CA6",
+    color: "rgba(55, 73, 87, 1)",
     fontWeight: "400",
-    marginLeft: -34, // to visually center title text
+    marginLeft: -34, 
+    fontFamily: "Inter",
   },
   sectionTitle: {
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: "500",
-    color: "#222B45",
+    color: "rgba(20, 32, 50, 1)",
     marginTop: 0,
     marginBottom: 2,
   },
   sectionSubtitle: {
-    fontSize: 17,
-    fontWeight: "400",
-    color: "#6A758D",
+    fontSize: 32,
+    fontWeight: "200",
+    color: "rgba(20, 32, 50, 1)",
     marginBottom: 10,
   },
   orderCard: {
@@ -129,61 +141,58 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.04,
     shadowRadius: 4,
     elevation: 1,
+    height: 107,
   },
   orderImage: {
-    width: 46,
-    height: 46,
+    width: 84,
+    height: 80,
     borderRadius: 10,
     marginRight: 12,
-    backgroundColor: "#ECECEC",
   },
-  orderDetails: {
-    flex: 1,
-  },
+  orderDetails: { flex: 1 },
   orderName: {
-    fontSize: 14,
+    fontSize: 20,
     fontWeight: "500",
-    color: "#222B45",
+    color: "rgba(20, 32, 50, 1)",
     marginBottom: 3,
+    fontFamily: "Inter"
   },
   orderPrice: {
-    fontSize: 13,
-    fontWeight: "400",
-    color: "#6A758D",
+    fontSize: 20,
+    fontWeight: "500",
+    color: "rgba(20, 32, 50, 1)",
   },
   orderNo: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "600",
-    color: "#797A7C",
+    color: "rgba(55, 73, 87, 1)",
     marginLeft: 6,
   },
   bottomNav: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
     width: "100%",
-    height: 68,
-    backgroundColor: "#fff",
+    height: 65,
+    backgroundColor: "#f6f6f6",
     flexDirection: "row",
     borderTopWidth: 1,
     borderColor: "#F2F3F7",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 0,
-    alignSelf: "center"
+    alignSelf: "center",
   },
   tabItem: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
-  tabIcon: {
-    fontSize: 22,
-    color: "#949CA6",
-    marginBottom: 3,
-  },
   tabLabel: {
     fontSize: 11,
     color: "#949CA6",
+  },
+  tabIconImg: {
+    width: 25,
+    height: 25,
+    marginBottom: 3,
+    resizeMode: "contain",
   },
 });

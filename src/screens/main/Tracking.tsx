@@ -1,60 +1,113 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  SafeAreaView,
+} from "react-native";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 
-const TrackingScreen = ({ navigation }: any) => (
+type RootStackParamList = {
+  VerifyScreen: undefined;
+  TrackingScreen: undefined;
+  [key: string]: undefined;
+};
+
+const TrackingScreen = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  
+  return (
   <SafeAreaView style={styles.safeArea}>
+    {/* MAIN CONTENT */}
     <View style={styles.container}>
+      {/* Header */}
       <View style={styles.headerRow}>
-        <TouchableOpacity><Text style={styles.backArrow}>‹</Text></TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.backArrow}>‹</Text>
+        </TouchableOpacity>
         <Text style={styles.headerTitle}>Tracking</Text>
+        <View style={{ width: 32 }} />
       </View>
+
+      {/* Track Card */}
       <View style={styles.trackCard}>
         <View style={styles.trackRow}>
-          <Image source={require("../../../assets/images/fries.png")} style={styles.mealImage} />
+          <Image
+            source={require("../../../assets/images/fries.png")}
+            style={styles.mealImage}
+          />
           <Text style={styles.mealName}>Beef sauce and goat</Text>
         </View>
+
         <Text style={styles.trackDetails}>Details</Text>
         <Text style={styles.trackDesc}>x3 chugo bag • Pick-up</Text>
+
         <Text style={styles.trackTotalTitle}>Total</Text>
         <Text style={styles.trackTotal}>₵ 574.00</Text>
 
         <View style={styles.sellerRow}>
-          <Image source={require("../../../assets/images/vendor.png")} style={styles.vendorLogo} />
+          <Image
+            source={require("../../../assets/images/Chickenman.jpg")}
+            style={styles.vendorLogo}
+          />
           <Text style={styles.vendorName}>Chiecknman pizzaman</Text>
           <Text style={styles.vendorStatus}>🟢 Open</Text>
         </View>
+
         <View style={styles.callRow}>
-          <TouchableOpacity style={styles.callBtn}><Text style={styles.callText}>Call</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.callBtn}>
+            <Text style={styles.callText}>Call</Text>
+          </TouchableOpacity>
           <Text style={styles.timeText}>12:00</Text>
         </View>
       </View>
+
+      {/* Progress */}
       <View style={styles.progressRow}>
         <Text style={styles.progressItem}>Order waiting</Text>
         <Text style={styles.progressTime}>12:00PM</Text>
       </View>
+
       <View style={styles.progressRow}>
         <Text style={styles.progressItem}>Verify your secret code</Text>
         <View style={styles.secretCodeRow}>
-          {["#", "#", "#", "#"].map((x, i) => (<Text key={i} style={styles.codeBox}>{x}</Text>))}
+          {["#", "#", "#", "#"].map((x, i) => (
+            <Text key={i} style={styles.codeBox}>
+              {x}
+            </Text>
+          ))}
         </View>
       </View>
+
       <View style={styles.progressRow}>
         <Text style={styles.progressItem}>Thank You</Text>
       </View>
-      <View style={styles.bottomNav}>
-        {["Home", "Notification", "checkout", "Orders", "Menu"].map(label => (
-          <TouchableOpacity key={label} style={styles.tabItem}>
-            <Text style={styles.tabIcon}>⬤</Text>
-            <Text style={styles.tabLabel}>{label}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+
+      {/* VERIFY BUTTON */}
+      <TouchableOpacity
+        style={styles.verifyBtn}
+        onPress={() => {navigation.navigate("VerifyScreen"); console.log("Verify button pressed")}}
+      >
+        <Text style={styles.verifyText}>Verify</Text>
+      </TouchableOpacity>
+    </View>
+
+    
+    <View style={styles.bottomNav}>
+      {["Home", "Notification", "checkout", "Orders", "Menu"].map(label => (
+        <TouchableOpacity key={label} style={styles.tabItem}>
+          <Text style={styles.tabIcon}>⬤</Text>
+          <Text style={styles.tabLabel}>{label}</Text>
+        </TouchableOpacity>
+      ))}
     </View>
   </SafeAreaView>
-);
+  );
+};
 
 const styles = StyleSheet.create({
-  // Safe area & container
   safeArea: {
     flex: 1,
     backgroundColor: "#F7F8FA",
@@ -65,7 +118,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#F7F8FA",
   },
 
-  // Header
   headerRow: {
     flexDirection: "row",
     alignItems: "center",
@@ -84,7 +136,6 @@ const styles = StyleSheet.create({
     marginLeft: -32,
   },
 
-  // Track card
   trackCard: {
     backgroundColor: "#fff",
     borderRadius: 16,
@@ -131,7 +182,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
 
-  // Seller info
   sellerRow: {
     flexDirection: "row",
     alignItems: "center",
@@ -155,7 +205,6 @@ const styles = StyleSheet.create({
     color: "#6FCF97",
   },
 
-  // Call button row
   callRow: {
     flexDirection: "row",
     alignItems: "center",
@@ -179,7 +228,6 @@ const styles = StyleSheet.create({
     color: "#222B45",
   },
 
-  // Progress row
   progressRow: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -196,7 +244,6 @@ const styles = StyleSheet.create({
     color: "#959CA6",
   },
 
-  // Secret code
   secretCodeRow: {
     flexDirection: "row",
     marginLeft: 10,
@@ -211,12 +258,22 @@ const styles = StyleSheet.create({
     color: "#222B45",
   },
 
-  // Bottom navigation
+  verifyBtn: {
+    backgroundColor: "#222B45",
+    paddingVertical: 13,
+    borderRadius: 14,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  verifyText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
+  },
+
   bottomNav: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    width: "100%",
     height: 65,
     backgroundColor: "#fff",
     flexDirection: "row",
@@ -224,6 +281,7 @@ const styles = StyleSheet.create({
     borderColor: "#E2E3E4",
     justifyContent: "space-between",
     alignItems: "center",
+    paddingHorizontal: 4,
   },
   tabItem: {
     flex: 1,

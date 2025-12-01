@@ -12,17 +12,17 @@ import {
   ScrollView 
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
+import MenuModal from '../../components/MenuModal'; // Make sure this path matches your directory.
 
-// Define your navigation param list
 type RootStackParamList = {
   Home: undefined;
-  Notification: undefined;
+  Notifications: undefined;
   Checkout: undefined;
   Orders: undefined;
   Menu: undefined;
+  FoodDetail: { meal: any }; // <-- Add params for FoodDetail
 };
 
-// Dummy Data
 const categories = ["Fried Rice", "Shawarma pie", "Fried Chicken"];
 const meals = [
   { id: "1", name: "Sausage Rolls", location: "Accra", distance: "3km", price: "₵57.00", oldPrice: "₵67.00", image: require("../../../assets/images/sausage.png") },
@@ -36,16 +36,14 @@ const meals = [
   { id: "9", name: "Fries", location: "Tema", distance: "20km", price: "₵57.00", oldPrice: "₵67.00", image: require("../../../assets/images/fries.png") },
 ];
 
-// Tab icons with proper route mapping
 const TAB_ICONS: { key: string; label: string; route: keyof RootStackParamList; icon: any }[] = [
   { key: "home", label: "Home", route: "Home", icon: require("../../../assets/icons/home.png") },
-  { key: "notification", label: "Notification", route: "Notification", icon: require("../../../assets/icons/notification.png") },
+  { key: "notifications", label: "Notification", route: "Notifications", icon: require("../../../assets/icons/notification.png") },
   { key: "checkout", label: "Checkout", route: "Checkout", icon: require("../../../assets/icons/checkout.png") },
   { key: "orders", label: "Orders", route: "Orders", icon: require("../../../assets/icons/orders.png") },
   { key: "menu", label: "Menu", route: "Menu", icon: require("../../../assets/icons/menu.png") },
 ];
 
-// Responsive item size
 const screenWidth = Dimensions.get("window").width;
 const itemMargin = 10;
 const numColumns = 3;
@@ -54,6 +52,7 @@ const cardWidth = (screenWidth - itemMargin * (numColumns + 2)) / numColumns;
 const Home = () => {
   const [search, setSearch] = useState("");
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const [menuVisible, setMenuVisible] = useState(false);
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -105,7 +104,11 @@ const Home = () => {
             keyExtractor={(item) => item.id}
             numColumns={numColumns}
             renderItem={({ item }) => (
-              <View style={[styles.mealCard, { width: cardWidth }]}>
+              <TouchableOpacity
+                style={[styles.mealCard, { width: cardWidth }]}
+                onPress={() => navigation.navigate("FoodDetail", { meal: item })}
+                activeOpacity={0.85}
+              >
                 <Image source={item.image} style={styles.mealImg} />
                 <Text style={styles.mealName}>
                   {item.name.length > 14 ? item.name.slice(0, 14) + "..." : item.name}
@@ -118,7 +121,7 @@ const Home = () => {
                   <Text style={styles.oldPrice}>{item.oldPrice}</Text>
                 </View>
                 <Text style={styles.fireIcon}>🔥</Text>
-              </View>
+              </TouchableOpacity>
             )}
             style={styles.gridList}
             contentContainerStyle={{ paddingBottom: 90 }}
@@ -133,13 +136,17 @@ const Home = () => {
             <TouchableOpacity
               key={tab.key}
               style={styles.tabItem}
-              onPress={() => navigation.navigate(tab.route)} // ✅ type-safe
+              // FIX: use as never for TS safety
+              onPress={() => navigation.navigate(tab.route as never)}
             >
               <Image source={tab.icon} style={styles.tabIconImg} />
               <Text style={styles.tabLabel}>{tab.label}</Text>
             </TouchableOpacity>
           ))}
         </View>
+
+        {/* Menu Modal */}
+        <MenuModal visible={menuVisible} onClose={() => setMenuVisible(false)} />
       </View>
     </SafeAreaView>
   );
@@ -158,9 +165,7 @@ const styles = StyleSheet.create({
     paddingTop: 18,
     paddingHorizontal: 8,
   },
-  header: {
-    marginBottom: 10,
-  },
+  header: { marginBottom: 10 },
   largeTitle: {
     fontSize: 32,
     fontWeight: "500",
