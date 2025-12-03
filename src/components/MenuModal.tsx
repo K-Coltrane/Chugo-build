@@ -92,26 +92,30 @@ const MenuModal: React.FC<MenuModalProps> = ({
     if (label === "Logout") return setShowLogout(true);
     if (label === "Delete Account") {
       onClose();
-      return navigation.navigate("DeleteAccount"); // Navigate to DeleteScreen
+      // Use push to create navigation history
+      return (navigation as any).push("DeleteAccount");
     }
 
-    switch (label) {
-      case "Profile":
-        navigation.navigate("Profile");
-        break;
-      case "Privacy":
-        navigation.navigate("Privacy");
-        break;
-      case "FAQ's":
-        navigation.navigate("FAQS");
-        break;
-      case "T&C":
-        navigation.navigate("Terms");
-        break;
-      default:
-        break;
-    }
     onClose();
+    // Small delay to allow modal to close before navigation
+    setTimeout(() => {
+      switch (label) {
+        case "Profile":
+          (navigation as any).push("Profile");
+          break;
+        case "Privacy":
+          (navigation as any).push("Privacy");
+          break;
+        case "FAQ's":
+          (navigation as any).push("FAQS");
+          break;
+        case "T&C":
+          (navigation as any).push("Terms");
+          break;
+        default:
+          break;
+      }
+    }, 100);
   };
 
   const confirmLogout = () => {

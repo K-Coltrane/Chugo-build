@@ -298,7 +298,6 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   mealPriceRow: {
-    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     marginTop: 2,
@@ -308,12 +307,12 @@ const styles = StyleSheet.create({
     color: "rgba(55, 73, 87, 1)",
     fontWeight: "700",
     fontSize: 12,
-    marginRight: 5,
   },
   oldPrice: {
     color: "rgba(55, 73, 87, 1)",
     fontSize: 10,
     textDecorationLine: "line-through",
+    marginTop: 4,
   },
   fireIcon: {
     position: "absolute",

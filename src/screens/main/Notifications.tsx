@@ -71,10 +71,10 @@ const Notifications = () => {
         <View style={styles.headerRow}>
           <TouchableOpacity 
             onPress={() => {
-              try {
+              const state = navigation.getState();
+              if (state && state.index > 0) {
                 navigation.goBack();
-              } catch (error) {
-                // If goBack fails, try navigating to Home
+              } else {
                 navigation.navigate('Home' as never);
               }
             }} 

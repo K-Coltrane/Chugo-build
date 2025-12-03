@@ -42,9 +42,10 @@ const TermsScreen: React.FC = () => {
       <View style={styles.header}>
         <TouchableOpacity 
           onPress={() => {
-            try {
+            const state = navigation.getState();
+            if (state && state.index > 0) {
               navigation.goBack();
-            } catch (error) {
+            } else {
               navigation.navigate('Home' as never);
             }
           }} 

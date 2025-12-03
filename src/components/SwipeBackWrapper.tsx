@@ -41,8 +41,11 @@ const SwipeBackWrapper: React.FC<SwipeBackWrapperProps> = ({ children }) => {
             duration: 200,
             useNativeDriver: true,
           }).start(() => {
-            if (navigation.canGoBack()) {
+            const state = navigation.getState();
+            if (state && state.index > 0) {
               navigation.goBack();
+            } else {
+              (navigation as any).navigate('Home');
             }
             translateX.setValue(0);
           });

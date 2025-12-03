@@ -1,5 +1,3 @@
-// FoodMapScreen.js (FULL FILE READY TO PASTE)
-
 import React, { useState } from 'react';
 import {
   View,
@@ -31,7 +29,7 @@ type OfferItem = {
   location: string;
   price: string;
   oldPrice: string;
-  image: { uri: string };
+  image: any;
 };
 
 const OFFERS: OfferItem[] = [
@@ -41,15 +39,15 @@ const OFFERS: OfferItem[] = [
     location: 'Tema',
     price: '₵57.00',
     oldPrice: '₵667.00',
-    image: { uri: 'https://via.placeholder.com/150x100.png?text=Chicken' },
+    image: require("../../../assets/images/chicken.png"),
   },
   {
     id: '2',
-    title: 'Fried friece',
+    title: 'Fries',
     location: 'Tema',
     price: '₵57.00',
     oldPrice: '₵667.00',
-    image: { uri: 'https://via.placeholder.com/150x100.png?text=Fries' },
+    image: require("../../../assets/images/fries.png"),
   },
 ];
 
@@ -78,9 +76,7 @@ const FilterScreen = () => {
       <View style={styles.offerCard}>
         <Image source={item.image} style={styles.offerImage} />
 
-        <View style={styles.fireBadge}>
-          <Icon name="flame" size={14} color="#ff6b00" />
-        </View>
+        <Text style={styles.fireIcon}>🔥</Text>
 
         <Text style={styles.offerTitle}>{item.title}</Text>
         <Text style={styles.offerLocation}>• {item.location}</Text>
@@ -102,10 +98,10 @@ const FilterScreen = () => {
         <View style={styles.backButtonContainer}>
           <TouchableOpacity 
             onPress={() => {
-              try {
+              const state = navigation.getState();
+              if (state && state.index > 0) {
                 navigation.goBack();
-              } catch (error) {
-                // If goBack fails, try navigating to Home
+              } else {
                 navigation.navigate('Home' as never);
               }
             }} 
@@ -128,9 +124,7 @@ const FilterScreen = () => {
           <View style={styles.headerRow}>
             <View style={styles.headerLeft}>
               <Image
-                source={{
-                  uri: 'https://via.placeholder.com/80x80.png?text=Logo',
-                }}
+                source={require("../../../assets/images/Chickenman.jpg")}
                 style={styles.logo}
               />
               <View style={{ flexShrink: 1, marginLeft: 10 }}>
@@ -237,25 +231,31 @@ const styles = StyleSheet.create({
 
   bottomSheet: {
     position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 70,
+    left: '5%',
+    right: '5%',
+    bottom: 100,
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
+    borderBottomLeftRadius: 32,
+    borderBottomRightRadius: 32,
+    backgroundColor: '#081528',
     overflow: 'hidden',
     elevation: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: -3 },
     shadowOpacity: 0.15,
     shadowRadius: 8,
-    maxHeight: '60%',
+    maxHeight: '50%',
+    alignSelf: 'center',
   },
 
   headerSection: {
-    backgroundColor: '#101C2A',
+    backgroundColor: '#081528',
     paddingTop: 20,
     paddingHorizontal: 16,
     paddingBottom: 16,
+    height: 120,
+    alignItems: 'center',
   },
 
   headerRow: {
@@ -330,6 +330,10 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingHorizontal: 16,
     paddingBottom: 16,
+    marginTop: -20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    alignItems: 'center',
   },
   sectionTitle: {
     fontSize: 18,
@@ -341,20 +345,23 @@ const styles = StyleSheet.create({
 
   offersList: {
     paddingVertical: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: -20,
   },
 
   // --- EXACT OFFER CARD UI ---
   offerWrapper: {
-    width: 180,
+    width: 150,
     alignItems: "center",
     justifyContent: "center",
-    marginRight: 18,
+    marginRight: 15,
   },
   offerCard: {
-    width: 170,
+    width: 140,
     backgroundColor: "#ffffff",
     borderRadius: 22,
-    padding: 12,
+    padding: 10,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
@@ -362,20 +369,19 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 6,
     position: "relative",
+    
   },
   offerImage: {
     width: "100%",
-    height: 120,
+    height: 100,
     borderRadius: 16,
   },
-  fireBadge: {
+  fireIcon: {
     position: "absolute",
-    top: 14,
-    right: 14,
-    backgroundColor: "#fff",
-    padding: 5,
-    borderRadius: 14,
-    elevation: 3,
+    top: 7,
+    right: 8,
+    fontSize: 15,
+    color: "#F95F18",
   },
   offerTitle: {
     fontSize: 15,
@@ -391,7 +397,7 @@ const styles = StyleSheet.create({
   offerPriceRow: {
     width: "100%",
     marginTop: 10,
-    alignItems: "flex-start",
+    alignItems: "center",
   },
   offerPrice: {
     fontSize: 17,
@@ -402,7 +408,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#A0A4AC",
     textDecorationLine: "line-through",
-    marginTop: -2,
+    marginTop: 4,
   },
 
   paginationDots: {

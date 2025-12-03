@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { 
   View, Text, StyleSheet, TextInput, Image, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView
 } from "react-native";
-import { useNavigation } from "@react-navigation/native"; // <-- Import added
+import { useNavigation, useRoute } from "@react-navigation/native"; // <-- Import added
 import MenuModal from "../../components/MenuModal";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
 // Dummy navigation bar icons – replace with your own!
@@ -40,9 +40,10 @@ const ProfileScreen = () => {
       <View style={styles.headerRow}>
         <TouchableOpacity 
           onPress={() => {
-            try {
+            const state = navigation.getState();
+            if (state && state.index > 0) {
               navigation.goBack();
-            } catch (error) {
+            } else {
               navigation.navigate('Home' as never);
             }
           }} 
