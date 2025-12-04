@@ -136,7 +136,7 @@ const Checkout: React.FC = () => {
         </View>
 
         {/* Next button */}
-        <TouchableOpacity style={styles.nextButton} onPress={() =>navigation.navigate("PaymentScreen")}>
+        <TouchableOpacity style={styles.nextButton} onPress={() =>navigation.navigate("PaymentScreen" as never)}>
           <Text style={styles.nextButtonText}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -228,7 +228,7 @@ const Checkout: React.FC = () => {
               style={styles.modalSaveBtn}
               onPress={() => {
                 setShowOrderModal(false);
-                navigation.navigate('Orders');
+                navigation.navigate('Orders' as never);
               }}>
               <Text style={styles.modalSaveBtnText}>Order Panel</Text>
             </TouchableOpacity>

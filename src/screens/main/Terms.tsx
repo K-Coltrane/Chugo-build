@@ -92,6 +92,7 @@ const TermsScreen: React.FC = () => {
           photo: require("../../../assets/images/avatar.png"),
         }}
       />
+    </View>
     </SafeAreaView>
     </SwipeBackWrapper>
   );

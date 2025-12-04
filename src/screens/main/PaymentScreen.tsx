@@ -86,7 +86,7 @@ const PaymentScreen: React.FC = () => {
   const goToOrder = () => {
     setOrderModalVisible(false);
     if (navigation && navigation.navigate) {
-      navigation.navigate("Orders");
+      navigation.navigate("Orders" as never);
     }
   };
 
@@ -354,7 +354,7 @@ const PaymentScreen: React.FC = () => {
               <Text style={orderStyles.orderText}>
                 You can Track your order{"\n"}in the orders panel
               </Text>
-              <TouchableOpacity style={orderStyles.button} onPress={() => navigation.navigate("Orders")}
+              <TouchableOpacity style={orderStyles.button} onPress={() => navigation.navigate("Orders" as never)}
 
 >
                 <Text style={orderStyles.buttonText}>Order Panel</Text>

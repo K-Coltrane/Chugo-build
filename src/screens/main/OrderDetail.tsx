@@ -120,12 +120,22 @@ const OrderDetail = () => {
       <TouchableOpacity style={styles.verifyBtn}  onPress={() => {(navigation as any).navigate("VerifyScreen") }}>
         <Text style={styles.verifyBtnText}>Verify</Text>
       </TouchableOpacity>
+      </View>
       </SafeAreaView>
     </SwipeBackWrapper>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "rgba(246, 246, 246, 1)",
+  },
+  container: {
+    flex: 1,
+    padding: 14,
+    backgroundColor: "rgba(246, 246, 246, 1)",
+  },
   // Header row
   headerRow: {
     flexDirection: "row",

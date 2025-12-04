@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Image, Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import MenuModal from "../../components/MenuModal";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+
+const SCREEN_WIDTH = Dimensions.get("window").width;
 
 const TAB_ICONS = [
   { key: "home", label: "Home", route: "Home", icon: require("../../../assets/icons/home.png") },
@@ -33,7 +35,8 @@ const VerifyScreen = () => {
         <View style={styles.headerRow}>
           <TouchableOpacity 
             onPress={() => {
-              if (navigation.canGoBack()) {
+              const state = navigation.getState();
+              if (state && state.index > 0) {
                 navigation.goBack();
               } else {
                 navigation.navigate('Home' as never);
@@ -56,12 +59,12 @@ const VerifyScreen = () => {
             <View style={styles.cornerBL} />
             <View style={styles.cornerBR} />
           </View>
-          
-          {/* Scan button */}
-          <TouchableOpacity style={styles.scanBtn}>
-            <Text style={styles.scanText}>Scan</Text>
-          </TouchableOpacity>
         </View>
+        
+        {/* Scan button - positioned above nav bar */}
+        <TouchableOpacity style={styles.scanBtn}>
+          <Text style={styles.scanText}>Scan</Text>
+        </TouchableOpacity>
       </View>
 
       {/* BOTTOM NAV */}
@@ -131,78 +134,74 @@ const styles = StyleSheet.create({
   scanArea: {
     width: 280,
     height: 280,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 20,
     position: "relative",
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOpacity: 0.05,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  cornerBase: {
-    position: "absolute",
-    width: 60,
-    height: 60,
-    borderColor: "#101C2A",
-    borderRadius: 24,
   },
   cornerTL: {
     position: "absolute",
-    top: 0,
-    left: 0,
-    width: 50,
-    height: 50,
-    borderTopWidth: 4,
-    borderLeftWidth: 4,
-    borderTopLeftRadius: 12,
+    top: -2,
+    left: -2,
+    width: 100,
+    height: 100,
+    borderTopWidth: 5,
+    borderLeftWidth: 5,
+    borderTopLeftRadius: 24,
     borderColor: "#101C2A",
+    borderBottomWidth: 0,
+    borderRightWidth: 0,
   },
   cornerTR: {
     position: "absolute",
-    top: 0,
-    right: 0,
-    width: 50,
-    height: 50,
-    borderTopWidth: 4,
-    borderRightWidth: 4,
-    borderTopRightRadius: 12,
+    top: -2,
+    right: -2,
+    width: 100,
+    height: 100,
+    borderTopWidth: 5,
+    borderRightWidth: 5,
+    borderTopRightRadius: 24,
     borderColor: "#101C2A",
+    borderBottomWidth: 0,
+    borderLeftWidth: 0,
   },
   cornerBL: {
     position: "absolute",
-    bottom: 0,
-    left: 0,
-    width: 50,
-    height: 50,
-    borderBottomWidth: 4,
-    borderLeftWidth: 4,
-    borderBottomLeftRadius: 12,
+    bottom: -2,
+    left: -2,
+    width: 100,
+    height: 100,
+    borderBottomWidth: 5,
+    borderLeftWidth: 5,
+    borderBottomLeftRadius: 24,
     borderColor: "#101C2A",
+    borderTopWidth: 0,
+    borderRightWidth: 0,
   },
   cornerBR: {
     position: "absolute",
-    bottom: 0,
-    right: 0,
-    width: 50,
-    height: 50,
-    borderBottomWidth: 4,
-    borderRightWidth: 4,
-    borderBottomRightRadius: 12,
+    bottom: -2,
+    right: -2,
+    width: 100,
+    height: 100,
+    borderBottomWidth: 5,
+    borderRightWidth: 5,
+    borderBottomRightRadius: 24,
     borderColor: "#101C2A",
+    borderTopWidth: 0,
+    borderLeftWidth: 0,
   },
 
   scanBtn: {
-    marginTop: 40,
+    position: "absolute",
+    bottom: 88,
+    width: 391,
+    height: 68,
     backgroundColor: "#101C2A",
-    borderRadius: 12,
-    paddingVertical: 16,
-    paddingHorizontal: 40,
+    borderRadius: 100,
     alignItems: "center",
     justifyContent: "center",
-    minWidth: 200,
+    alignSelf: "center",
+    maxWidth: SCREEN_WIDTH - 28,
   },
   scanText: {
     color: "#FFFFFF",

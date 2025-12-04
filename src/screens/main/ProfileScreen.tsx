@@ -155,9 +155,9 @@ const ProfileScreen = () => {
           photo: require("../../../assets/images/avatar.png"),
         }}
       />
+    </View>
     </SafeAreaView>
     </SwipeBackWrapper>
-    
   );
 };
 

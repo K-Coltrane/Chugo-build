@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, Image, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import SwipeBackWrapper from '../../components/SwipeBackWrapper';
 
 const RatingScreen = () => {
@@ -69,15 +70,17 @@ const RatingScreen = () => {
       <TouchableOpacity style={styles.primaryButton}>
         <Text style={styles.primaryButtonText}>Submit</Text>
       </TouchableOpacity>
-
-      {/* Your custom bottom nav here */}
-      {/* <BottomNav /> */}
+      </View>
       </SafeAreaView>
     </SwipeBackWrapper>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "rgba(246, 246, 246, 1)",
+  },
   container: {
     flex: 1,
     padding: 20,
