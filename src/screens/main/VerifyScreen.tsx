@@ -65,7 +65,10 @@ const VerifyScreen = () => {
       </View>
 
       {/* Scan button - positioned above nav bar */}
-      <TouchableOpacity style={styles.scanBtn}>
+      <TouchableOpacity 
+        style={styles.scanBtn}
+        onPress={() => navigation.navigate("RatingScreen" as never)}
+      >
         <Text style={styles.scanText}>Scan</Text>
       </TouchableOpacity>
 

@@ -75,24 +75,28 @@ const Orders = () => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 100 }}
         />
-        <View style={styles.bottomNav}>
-          {TAB_ICONS.map((tab) => (
-            <TouchableOpacity
-              key={tab.key}
-              style={styles.tabItem}
-              onPress={
-                tab.key === "menu"
-                  ? () => setMenuVisible(true)
-                  : () => navigation.navigate(tab.route)
-              }
-            >
-              <Image source={tab.icon} style={styles.tabIconImg} />
-              <Text style={styles.tabLabel}>{tab.label}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-        <MenuModal visible={menuVisible} onClose={() => setMenuVisible(false)} />
       </View>
+
+      {/* Bottom Navigation */}
+      <View style={styles.bottomNav}>
+        {TAB_ICONS.map((tab) => (
+          <TouchableOpacity
+            key={tab.key}
+            style={styles.tabItem}
+            onPress={
+              tab.key === "menu"
+                ? () => setMenuVisible(true)
+                : () => navigation.navigate(tab.route as never)
+            }
+          >
+            <Image source={tab.icon} style={styles.tabIconImg} />
+            <Text style={styles.tabLabel}>{tab.label}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* Menu Modal */}
+      <MenuModal visible={menuVisible} onClose={() => setMenuVisible(false)} />
     </SafeAreaView>
     </SwipeBackWrapper>
   );

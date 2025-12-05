@@ -63,6 +63,18 @@ const Home = () => {
     }
   };
 
+  // Filter meals based on search query
+  const filteredMeals = meals.filter((meal) => {
+    if (!search.trim()) {
+      return true; // Show all meals if search is empty
+    }
+    const searchLower = search.toLowerCase();
+    return (
+      meal.name.toLowerCase().includes(searchLower) ||
+      meal.location.toLowerCase().includes(searchLower)
+    );
+  });
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -109,7 +121,7 @@ const Home = () => {
 
           {/* Meals Grid */}
           <FlatList
-            data={meals}
+            data={filteredMeals}
             keyExtractor={(item) => item.id}
             numColumns={numColumns}
             renderItem={({ item }) => (
