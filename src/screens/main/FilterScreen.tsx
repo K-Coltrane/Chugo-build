@@ -115,7 +115,7 @@ const FilterScreen = () => {
             <Text style={styles.backArrow}>←</Text>
           </TouchableOpacity>
           <View style={{ width: 24 }} />
-        </View>
+      </View>
 
       {/* Bottom sheet */}
       <View style={styles.bottomSheet}>
