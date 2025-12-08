@@ -314,6 +314,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     height: 60,
     backgroundColor: "rgba(246, 246, 246, 1)",
+    marginTop: 20,  
   },
   backArrow: {
     fontSize: 28,

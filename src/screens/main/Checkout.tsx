@@ -262,6 +262,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 18,
     height: 60,
+    marginTop: 20,  
   },
   backArrow: {
     fontSize: 28,
