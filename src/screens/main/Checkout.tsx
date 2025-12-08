@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, FlatList, SafeAreaView, Modal } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, FlatList, SafeAreaView, Modal, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
 
@@ -64,6 +64,7 @@ const Checkout: React.FC = () => {
   return (
     <SwipeBackWrapper>
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.headerRow}>

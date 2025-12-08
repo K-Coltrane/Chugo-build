@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Image,
+  StatusBar,
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import MenuModal from "../../components/MenuModal"; // Keep if you use it
@@ -74,6 +75,7 @@ const Notifications = () => {
   return (
     <SwipeBackWrapper>
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.headerRow}>

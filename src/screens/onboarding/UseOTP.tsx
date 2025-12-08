@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Platform } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Platform, StatusBar } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 import phoneIcon from "../../../assets/icons/phone_icon.png";
 const UseOTP = ({ navigation }: any) => {
@@ -10,6 +10,8 @@ const UseOTP = ({ navigation }: any) => {
   const [agree, setAgree] = useState(false);
 
   return (
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     <View style={styles.container}>
       {/* Top section with circle accent */}
       <View style={styles.header}>
@@ -52,6 +54,7 @@ const UseOTP = ({ navigation }: any) => {
         </Text>
       </View>
     </View>
+    </>
   );
 };
 

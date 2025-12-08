@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Platform, KeyboardAvoidingView, ScrollView } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Platform, KeyboardAvoidingView, ScrollView, StatusBar } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 
   import userIcon from "../../../assets/icons/profile.png";
@@ -17,6 +17,8 @@ const Signup = ({ navigation }: any) => {
  
 
   return (
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     <KeyboardAvoidingView 
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -100,6 +102,7 @@ const Signup = ({ navigation }: any) => {
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
+    </>
   );
 };
 

@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
+  StatusBar,
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import MenuModal, { RootStackParamList } from "../../components/MenuModal";
@@ -48,6 +49,7 @@ const FAQScreen = () => {
   return (
     <SwipeBackWrapper>
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       <View style={{ flex: 1 }}>
         {/* Header */}
         <View style={styles.headerRow}>

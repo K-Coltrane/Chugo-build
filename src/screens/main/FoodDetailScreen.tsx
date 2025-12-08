@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   Linking,
   FlatList,
+  StatusBar,
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import MenuModal from "../../components/MenuModal";
@@ -120,6 +121,7 @@ const FoodDetailScreen = () => {
   return (
     <SwipeBackWrapper>
       <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       {/* HEADER */}
       <View style={styles.header}>
         <TouchableOpacity 

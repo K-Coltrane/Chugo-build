@@ -11,6 +11,7 @@ import {
   Image,
   TouchableWithoutFeedback,
   Platform,
+  StatusBar,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
@@ -93,6 +94,7 @@ const PaymentScreen: React.FC = () => {
   return (
     <SwipeBackWrapper>
       <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       <View style={styles.container}>
         {/* Header Row */}
         <View style={styles.headerRow}>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Image, Dimensions } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Image, Dimensions, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import MenuModal from "../../components/MenuModal";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
@@ -31,6 +31,7 @@ const VerifyScreen = () => {
   return (
     <SwipeBackWrapper>
       <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       {/* MAIN CONTENT */}
       <View style={styles.container}>
         {/* Header */}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, SafeAreaView, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import MenuModal from '../../components/MenuModal';
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
@@ -36,6 +36,7 @@ const Orders = () => {
   return (
     <SwipeBackWrapper>
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.headerRow}>

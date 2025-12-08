@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Platform, KeyboardAvoidingView, ScrollView } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Platform, KeyboardAvoidingView, ScrollView, StatusBar } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 import emailIcon from "../../../assets/icons/mail_icon.png";
 import lockIcon from "../../../assets/icons/password_icon.png";
@@ -11,6 +11,8 @@ const Login = ({ navigation }: any) => {
   const [agree, setAgree] = useState(false);
 
   return (
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     <KeyboardAvoidingView 
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -68,6 +70,7 @@ const Login = ({ navigation }: any) => {
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
+    </>
   );
 };
 

@@ -10,6 +10,7 @@ import {
   Image,
   KeyboardAvoidingView,
   Platform,
+  StatusBar,
 } from "react-native";
 import MenuModal from "../../components/MenuModal";
 import { useNavigation } from "@react-navigation/native";
@@ -44,6 +45,7 @@ const DeleteScreen: React.FC = () => {
   return (
     <SwipeBackWrapper>
     <SafeAreaView style={styles.safeArea}>
+    <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>

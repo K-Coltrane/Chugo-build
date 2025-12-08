@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, SafeAreaView, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, SafeAreaView, Image, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
 
@@ -9,6 +9,7 @@ const ReviewScreen = ({ navigation: navProp }: any) => {
   return (
     <SwipeBackWrapper>
       <SafeAreaView style={styles.safeArea}>
+        <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
         <View style={styles.container}>
           {/* Header */}
           <View style={styles.headerRow}>

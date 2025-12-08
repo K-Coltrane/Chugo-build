@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, StatusBar } from "react-native";
 
 const OTP = ({ navigation }: any) => {
   const [otp, setOtp] = useState(["", "", "", "", ""]);
@@ -31,6 +31,8 @@ const OTP = ({ navigation }: any) => {
   };
 
   return (
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     <View style={styles.container}>
       {/* Top section with circle accent */}
       <View style={styles.header}>
@@ -80,6 +82,7 @@ const OTP = ({ navigation }: any) => {
         </Text>
       </View>
     </View>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 // Onboarding1.tsx
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Image, Animated } from 'react-native';
+import { View, Text, StyleSheet, Image, Animated, StatusBar } from 'react-native';
 
 const FORK_IMAGE = require('../../assets/images/logo.png'); // adjust path
 
@@ -31,6 +31,8 @@ const Onboarding1 = ({ navigation }: any) => {
   }, []);
 
   return (
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
       <View style={styles.circle}>
         <View style={styles.textIconRow}>
@@ -43,6 +45,7 @@ const Onboarding1 = ({ navigation }: any) => {
         </View>
       </View>
     </Animated.View>
+    </>
   );
 };
 

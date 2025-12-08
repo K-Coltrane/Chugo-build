@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
+  StatusBar,
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
@@ -22,6 +23,7 @@ const TrackingScreen = () => {
   return (
     <SwipeBackWrapper>
       <SafeAreaView style={styles.safeArea}>
+    <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     {/* MAIN CONTENT */}
     <View style={styles.container}>
       {/* Header */}

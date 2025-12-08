@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { 
-  View, Text, StyleSheet, TextInput, Image, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView
+  View, Text, StyleSheet, TextInput, Image, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, StatusBar
 } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native"; // <-- Import added
 import MenuModal from "../../components/MenuModal";
@@ -36,6 +36,7 @@ const ProfileScreen = () => {
   return (
     <SwipeBackWrapper>
     <SafeAreaView style={styles.safeArea}>
+    <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.headerRow}>

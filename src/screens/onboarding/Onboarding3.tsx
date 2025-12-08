@@ -1,8 +1,10 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Image, StatusBar } from "react-native";
 
 export default function Onboarding3({ navigation }: any) {
   return (
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     <View style={styles.container}>
       {/* IMAGES SECTION */}
       <View style={styles.imagesContainer}>
@@ -37,7 +39,8 @@ export default function Onboarding3({ navigation }: any) {
       <Text style={styles.secondaryBtnText}>Login</Text>
     </TouchableOpacity>
   </View>
-);
+    </>
+  );
 }
 
 

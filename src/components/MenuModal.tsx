@@ -10,6 +10,7 @@ import {
   Animated,
   PanResponder,
   Dimensions,
+  Platform,
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 
@@ -24,6 +25,7 @@ export type RootStackParamList = {
 };
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
+const SCREEN_WIDTH = Dimensions.get("window").width;
 const NAVBAR_HEIGHT = 56; // Adjust according to your bottom navbar height
 
 interface MenuModalProps {
@@ -198,7 +200,13 @@ const MenuModal: React.FC<MenuModalProps> = ({
 
 const styles = StyleSheet.create({
   overlay: {
-    ...StyleSheet.absoluteFillObject,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
     backgroundColor: "rgba(0,0,0,0.06)",
     zIndex: 1,
   },

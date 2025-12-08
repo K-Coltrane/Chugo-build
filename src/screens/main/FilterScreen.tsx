@@ -92,9 +92,14 @@ const FilterScreen = () => {
   return (
     <SwipeBackWrapper>
       <SafeAreaView style={styles.root}>
-        <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
-        <View style={styles.container}>
-        {/* Header */}
+        <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
+        
+        {/* Map placeholder - covers entire screen */}
+        <View style={styles.mapPlaceholder}>
+          <Text style={styles.mapText}>MAP GOES HERE</Text>
+        </View>
+
+        {/* Header - positioned absolutely on top */}
         <View style={styles.headerRow}>
           <TouchableOpacity 
             onPress={() => {
@@ -112,16 +117,11 @@ const FilterScreen = () => {
           <View style={{ width: 24 }} />
         </View>
 
-      {/* Map placeholder */}
-      <View style={styles.mapPlaceholder}>
-        <Text style={styles.mapText}>MAP GOES HERE</Text>
-      </View>
-
       {/* Bottom sheet */}
       <View style={styles.bottomSheet}>
         {/* Header */}
         <View style={styles.headerSection}>
-          <View style={styles.headerRow}>
+          <View style={styles.bottomSheetHeaderRow}>
             <View style={styles.headerLeft}>
               <Image
                 source={require("../../../assets/images/Chickenman.jpg")}
@@ -193,7 +193,6 @@ const FilterScreen = () => {
         visible={menuVisible}
         onClose={() => setMenuVisible(false)}
       />
-      </View>
       </SafeAreaView>
     </SwipeBackWrapper>
   );
@@ -204,20 +203,21 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
   },
-  container: {
-    flex: 1,
-    padding: 14,
-    backgroundColor: '#ffffff',
-  },
 
-  // Header
+  // Header - positioned absolutely on top of map
   headerRow: {
+    position: 'absolute',
+    top: 20,
+    left: 0,
+    right: 0,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 12,
     paddingHorizontal: 18,
     height: 60,
+    zIndex: 10,
+    backgroundColor: 'transparent',
   },
   backArrow: {
     fontSize: 28,
@@ -225,9 +225,21 @@ const styles = StyleSheet.create({
     fontWeight: "300",
     lineHeight: 28,
   },
+  
+  // Bottom sheet header row (separate from top header)
+  bottomSheetHeaderRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+  },
 
   mapPlaceholder: {
-    flex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     backgroundColor: '#e5e7eb',
     justifyContent: 'center',
     alignItems: 'center',
@@ -256,6 +268,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     maxHeight: '50%',
     alignSelf: 'center',
+    zIndex: 10,
   },
 
   headerSection: {
