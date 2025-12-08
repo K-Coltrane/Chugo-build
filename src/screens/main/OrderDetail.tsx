@@ -31,7 +31,8 @@ const OrderDetail = () => {
             }
           }} 
           activeOpacity={0.7}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          style={styles.backButton}
+          hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }}
         >
           <Text style={styles.backArrow}>←</Text>
         </TouchableOpacity>
@@ -147,11 +148,19 @@ const styles = StyleSheet.create({
     height: 60,
     marginTop: 20,  
   },
+  backButton: {
+    width: 30,
+    height: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    marginTop: -10,
+  },
   backArrow: {
-    fontSize: 28,
+    fontSize: 42,
     color: "#1c1c1c",
-    fontWeight: "300",
-    lineHeight: 28,
+    fontWeight: "700",
+    lineHeight: 42,
   },
   header: { 
     flex: 1,
@@ -159,7 +168,6 @@ const styles = StyleSheet.create({
     fontWeight: "600", 
     color: "rgba(55, 73, 87, 1)", 
     textAlign: "center",
-    marginLeft: -24,
   },
 
   cardOuter: {

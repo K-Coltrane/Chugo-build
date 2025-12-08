@@ -187,10 +187,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   closeIcon: {
-    fontSize: 28,
+    fontSize: 20,
     color: "#111827",
     fontWeight: "300",
-    lineHeight: 28,
+    lineHeight: 20,
     transform: [{ rotate: '45deg' }],
   },
   scrollContent: {

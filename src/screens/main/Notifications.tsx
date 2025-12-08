@@ -9,6 +9,7 @@ import {
   StatusBar,
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
+import Icon from 'react-native-vector-icons/Ionicons';
 import MenuModal from "../../components/MenuModal"; // Keep if you use it
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
 
@@ -88,12 +89,13 @@ const Notifications = () => {
               }
             }} 
             activeOpacity={0.7}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            style={styles.backButton}
+            hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }}
           >
             <Text style={styles.backArrow}>←</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Notifications</Text>
-          <View style={{ width: 24 }} />
+          <View style={{ width: 44 }} />
         </View>
 
         {/* Notification Card */}
@@ -152,11 +154,19 @@ const styles = StyleSheet.create({
     height: 60,
     marginTop: 20,  
   },
+  backButton: {
+    width: 30,
+    height: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    marginTop: -10,
+  },
   backArrow: {
-    fontSize: 28,
+    fontSize: 42,
     color: "#1c1c1c",
-    fontWeight: "300",
-    lineHeight: 28,
+    fontWeight: "700",
+    lineHeight: 42,
   },
   headerTitle: {
     flex: 1,
@@ -164,7 +174,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
-    marginLeft: -24,
   },
 
   // Notification Card
