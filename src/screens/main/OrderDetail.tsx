@@ -173,11 +173,14 @@ const styles = StyleSheet.create({
   cardOuter: {
     backgroundColor: "rgba(255, 255, 255, 1)",
     borderRadius: 20,
-    margin: 16,
+    
     shadowColor: "#AAA",
     shadowOpacity: 0.08,
     shadowRadius: 8,
     elevation: 3,
+    width: "100%",
+    marginBottom: 50,
+    
   },
   cardInner: {
     padding: 18,
@@ -279,7 +282,7 @@ const styles = StyleSheet.create({
 
   // Stepper
   stepperOuter: {
-    marginTop: 9,
+    marginTop: 13,
     paddingHorizontal: 28,
     marginBottom: 20,
   },

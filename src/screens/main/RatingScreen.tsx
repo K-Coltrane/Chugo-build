@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
     color: '#142032',
     marginBottom: 12,
     lineHeight: 20,
-    marginTop: 30,
+    marginTop: -1,
   },
   textArea: {
     borderWidth: 1,

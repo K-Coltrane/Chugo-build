@@ -80,12 +80,12 @@ const TrackingScreen = () => {
       </View>
 
       {/* Progress */}
-      <View style={styles.progressRow}>
+      <View style={[styles.progressRow, { marginTop: 24 }]}>
         <Text style={styles.progressItem}>Order waiting</Text>
         <Text style={styles.progressTime}>12:00PM</Text>
       </View>
 
-      <View style={styles.progressRow}>
+      <View style={[styles.progressRow, { marginTop: 24 }]}>
         <Text style={styles.progressItem}>Verify your secret code</Text>
         <View style={styles.secretCodeRow}>
           {["#", "#", "#", "#"].map((x, i) => (
@@ -96,7 +96,7 @@ const TrackingScreen = () => {
         </View>
       </View>
 
-      <View style={styles.progressRow}>
+      <View style={[styles.progressRow, { marginTop: 24 }]}>
         <Text style={styles.progressItem}>Thank You</Text>
       </View>
 
@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
   progressRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: 6,
+    marginBottom: 0,
     alignItems: "center",
   },
   progressItem: {

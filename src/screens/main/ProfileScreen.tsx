@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { 
-  View, Text, StyleSheet, TextInput, Image, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, StatusBar
+  View, Text, StyleSheet, TextInput, Image, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, StatusBar, Modal, FlatList
 } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native"; // <-- Import added
 import MenuModal from "../../components/MenuModal";
@@ -14,12 +14,27 @@ const TAB_ICONS = [
   { key: "menu", label: "Menu", route: "Menu", icon: require("../../../assets/icons/menu.png") },
 ];
 
+const countries = [
+  { code: "+233", flag: "🇬🇭", name: "Ghana", flagUrl: "https://flagcdn.com/w40/gh.png" },
+  { code: "+234", flag: "🇳🇬", name: "Nigeria", flagUrl: "https://flagcdn.com/w40/ng.png" },
+  { code: "+254", flag: "🇰🇪", name: "Kenya", flagUrl: "https://flagcdn.com/w40/ke.png" },
+  { code: "+27", flag: "🇿🇦", name: "South Africa", flagUrl: "https://flagcdn.com/w40/za.png" },
+  { code: "+1", flag: "🇺🇸", name: "United States", flagUrl: "https://flagcdn.com/w40/us.png" },
+  { code: "+44", flag: "🇬🇧", name: "United Kingdom", flagUrl: "https://flagcdn.com/w40/gb.png" },
+  { code: "+33", flag: "🇫🇷", name: "France", flagUrl: "https://flagcdn.com/w40/fr.png" },
+  { code: "+49", flag: "🇩🇪", name: "Germany", flagUrl: "https://flagcdn.com/w40/de.png" },
+  { code: "+91", flag: "🇮🇳", name: "India", flagUrl: "https://flagcdn.com/w40/in.png" },
+  { code: "+86", flag: "🇨🇳", name: "China", flagUrl: "https://flagcdn.com/w40/cn.png" },
+];
+
 const ProfileScreen = () => {
   const [name, setName] = useState("Pharm Aingo kwame");
   const [email, setEmail] = useState("madhu@gmail.com");
   const [phone, setPhone] = useState("");
   const [dob, setDob] = useState("2/4/67");
   const [modalVisible, setModalVisible] = useState(false);
+  const [countryModalVisible, setCountryModalVisible] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
 
   const navigation = useNavigation(); // <-- Fixed
   const [menuVisible, setMenuVisible] = useState(false);
@@ -102,13 +117,17 @@ const ProfileScreen = () => {
             />
             <Text style={styles.label}>Phone number</Text>
             <View style={styles.phoneRow}>
-              <View style={styles.flagBox}>
+              <TouchableOpacity 
+                style={styles.flagBox}
+                onPress={() => setCountryModalVisible(true)}
+              >
                 <Image
-                  source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Ghana.png" }}
+                  source={{ uri: selectedCountry.flagUrl }}
                   style={styles.flagIcon}
                 />
-                <Text style={styles.flagText}>+233</Text>
-              </View>
+                <Text style={styles.flagText}>{selectedCountry.code}</Text>
+                <Text style={styles.dropdownArrow}>▼</Text>
+              </TouchableOpacity>
               <TextInput
                 style={[styles.input, styles.inputPhone]}
                 placeholder="Number"
@@ -158,6 +177,52 @@ const ProfileScreen = () => {
         photo: require("../../../assets/images/avatar.png"),
       }}
     />
+
+    {/* Country Code Modal */}
+    <Modal
+      visible={countryModalVisible}
+      transparent={true}
+      animationType="slide"
+      onRequestClose={() => setCountryModalVisible(false)}
+    >
+      <TouchableOpacity 
+        style={styles.modalOverlay}
+        activeOpacity={1}
+        onPress={() => setCountryModalVisible(false)}
+      >
+        <View style={styles.modalContent}>
+          <View style={styles.modalHeader}>
+            <Text style={styles.modalTitle}>Select Country</Text>
+            <TouchableOpacity onPress={() => setCountryModalVisible(false)}>
+              <Text style={styles.modalClose}>✕</Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            data={countries}
+            keyExtractor={(item) => item.code}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={[
+                  styles.countryItem,
+                  selectedCountry.code === item.code && styles.countryItemSelected
+                ]}
+                onPress={() => {
+                  setSelectedCountry(item);
+                  setCountryModalVisible(false);
+                }}
+              >
+                <Image
+                  source={{ uri: item.flagUrl }}
+                  style={styles.countryFlag}
+                />
+                <Text style={styles.countryName}>{item.name}</Text>
+                <Text style={styles.countryCode}>{item.code}</Text>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
+      </TouchableOpacity>
+    </Modal>
     </SafeAreaView>
     </SwipeBackWrapper>
   );
@@ -229,10 +294,8 @@ const styles = StyleSheet.create({
     height: 29,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "transparent",
     borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#eee",
   },
   editIcon: { width: 19, height: 19 },
 
@@ -254,17 +317,83 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     borderRadius: 12,
-    paddingHorizontal: 7,
+    paddingHorizontal: 10,
     paddingVertical: 6,
     marginRight: 4,
     borderWidth: 1,
     borderColor: "#f3f3f7",
     height: 47,
-    width: 104,
+    minWidth: 110,
+    justifyContent: "flex-start",
   },
-  flagIcon: { width: 30, height: 29, marginRight: 5, borderRadius: 3 },
-  flagText: { color: "#232323", fontWeight: "700", fontSize: 15 },
+  flagIcon: { width: 24, height: 18, marginRight: 8, borderRadius: 2, resizeMode: "cover" },
+  flagText: { color: "#232323", fontWeight: "700", fontSize: 15, marginRight: 6 },
+  dropdownArrow: {
+    fontSize: 8,
+    color: "#232323",
+    marginLeft: "auto",
+  },
   inputPhone: { flex: 1, marginLeft: 7 },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    justifyContent: "flex-end",
+  },
+  modalContent: {
+    backgroundColor: "#fff",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    maxHeight: "70%",
+    paddingBottom: 20,
+  },
+  modalHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#f3f3f7",
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: "600",
+    color: "#232323",
+  },
+  modalClose: {
+    fontSize: 24,
+    color: "#232323",
+    fontWeight: "300",
+  },
+  countryItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 15,
+    paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#f3f3f7",
+  },
+  countryItemSelected: {
+    backgroundColor: "#f9f9fa",
+  },
+  countryFlag: {
+    width: 32,
+    height: 24,
+    borderRadius: 3,
+    marginRight: 12,
+    resizeMode: "cover",
+  },
+  countryName: {
+    flex: 1,
+    fontSize: 16,
+    color: "#232323",
+    fontWeight: "400",
+  },
+  countryCode: {
+    fontSize: 16,
+    color: "#232323",
+    fontWeight: "600",
+    marginLeft: 10,
+  },
 
   saveBtn: {
     backgroundColor: "rgba(8, 21, 40, 1)",
