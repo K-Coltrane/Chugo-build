@@ -5,7 +5,7 @@ import MainStack from "./MainStack";
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <MainStack />
+      <OnboardingStack />
     </NavigationContainer>
   );
 };
