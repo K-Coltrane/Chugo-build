@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
+  StatusBar,
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
@@ -22,6 +23,7 @@ const TrackingScreen = () => {
   return (
     <SwipeBackWrapper>
       <SafeAreaView style={styles.safeArea}>
+    <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     {/* MAIN CONTENT */}
     <View style={styles.container}>
       {/* Header */}
@@ -35,7 +37,8 @@ const TrackingScreen = () => {
             }
           }} 
           activeOpacity={0.7}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          style={styles.backButton}
+          hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }}
         >
           <Text style={styles.backArrow}>←</Text>
         </TouchableOpacity>
@@ -77,12 +80,12 @@ const TrackingScreen = () => {
       </View>
 
       {/* Progress */}
-      <View style={styles.progressRow}>
+      <View style={[styles.progressRow, { marginTop: 24 }]}>
         <Text style={styles.progressItem}>Order waiting</Text>
         <Text style={styles.progressTime}>12:00PM</Text>
       </View>
 
-      <View style={styles.progressRow}>
+      <View style={[styles.progressRow, { marginTop: 24 }]}>
         <Text style={styles.progressItem}>Verify your secret code</Text>
         <View style={styles.secretCodeRow}>
           {["#", "#", "#", "#"].map((x, i) => (
@@ -93,7 +96,7 @@ const TrackingScreen = () => {
         </View>
       </View>
 
-      <View style={styles.progressRow}>
+      <View style={[styles.progressRow, { marginTop: 24 }]}>
         <Text style={styles.progressItem}>Thank You</Text>
       </View>
 
@@ -136,14 +139,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 12,
+    marginTop: 20,
     paddingHorizontal: 18,
     height: 60,
   },
+  backButton: {
+    width: 30,
+    height: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    marginTop: -10,
+  },
   backArrow: {
-    fontSize: 28,
+    fontSize: 42,
     color: "#1c1c1c",
-    fontWeight: "300",
-    lineHeight: 28,
+    fontWeight: "700",
+    lineHeight: 42,
   },
   headerTitle: {
     flex: 1,
@@ -151,7 +163,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
-    marginLeft: -24,
   },
 
   trackCard: {
@@ -249,7 +260,7 @@ const styles = StyleSheet.create({
   progressRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: 6,
+    marginBottom: 0,
     alignItems: "center",
   },
   progressItem: {

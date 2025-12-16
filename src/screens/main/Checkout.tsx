@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, FlatList, SafeAreaView, Modal } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, FlatList, SafeAreaView, Modal, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
 
@@ -64,22 +64,24 @@ const Checkout: React.FC = () => {
   return (
     <SwipeBackWrapper>
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.headerRow}>
-          <TouchableOpacity 
-            onPress={() => {
-              if (navigation.canGoBack()) {
-                navigation.goBack();
-              } else {
-                navigation.navigate('Home' as never);
-              }
-            }} 
-            activeOpacity={0.7}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          >
-            <Text style={styles.backArrow}>←</Text>
-          </TouchableOpacity>
+        <TouchableOpacity 
+          onPress={() => {
+            if (navigation.canGoBack()) {
+              navigation.goBack();
+            } else {
+              navigation.navigate('Home' as never);
+            }
+          }} 
+          activeOpacity={0.7}
+          style={styles.backButton}
+          hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }}
+        >
+          <Text style={styles.backArrow}>←</Text>
+        </TouchableOpacity>
           <Text style={styles.payment}>Payment</Text>
           <View style={{ width: 24 }} />
         </View>
@@ -261,12 +263,21 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 18,
     height: 60,
+    marginTop: 20,  
+  },
+  backButton: {
+    width: 30,
+    height: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    marginTop: -10,
   },
   backArrow: {
-    fontSize: 28,
+    fontSize: 42,
     color: "#1c1c1c",
-    fontWeight: "300",
-    lineHeight: 28,
+    fontWeight: "700",
+    lineHeight: 42,
   },
   payment: {
     flex: 1,
@@ -274,7 +285,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
-    marginLeft: -24,
   },
   sectionTitle: {
     fontSize: 32,

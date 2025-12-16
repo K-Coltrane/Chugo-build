@@ -9,7 +9,8 @@ import {
   FlatList, 
   Dimensions, 
   SafeAreaView, 
-  ScrollView 
+  ScrollView,
+  StatusBar
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import MenuModal from '../../components/MenuModal'; // Make sure this path matches your directory.
@@ -63,27 +64,16 @@ const Home = () => {
     }
   };
 
-  // Filter meals based on search query
-  const filteredMeals = meals.filter((meal) => {
-    if (!search.trim()) {
-      return true; // Show all meals if search is empty
-    }
-    const searchLower = search.toLowerCase();
-    return (
-      meal.name.toLowerCase().includes(searchLower) ||
-      meal.location.toLowerCase().includes(searchLower)
-    );
-  });
-
   return (
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
           {/* Title/Address */}
           <View style={styles.header}>
-            <Text style={styles.largeTitle}>My Tasty Chugo meals</Text>
-            <Text style={styles.subTitle}>Order & Eat</Text>
-            <Text style={styles.address}>Nil ankrah road spintex</Text>
+            <Text style={styles.largeTitle}>  My Tasty Chugo meals</Text>
+            <Text style={styles.subTitle}>  Order & Eat</Text>
+            <Text style={styles.address}>      Nil ankrah road spintex</Text>
           </View>
 
           {/* Search Section */}
@@ -121,7 +111,7 @@ const Home = () => {
 
           {/* Meals Grid */}
           <FlatList
-            data={filteredMeals}
+            data={meals}
             keyExtractor={(item) => item.id}
             numColumns={numColumns}
             renderItem={({ item }) => (
@@ -191,6 +181,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "rgba(20, 32, 50, 1)",
     marginBottom: 3,
+    marginTop: 50,
   },
   subTitle: {
     fontSize: 32,
