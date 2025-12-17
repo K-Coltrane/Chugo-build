@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     position: "relative",
     backgroundColor: "rgba(184, 254, 34, 0.17)",
     borderRadius: 20,
-    marginTop: 10,
+    marginTop: 30,
   },
   image: {
     width: 180,
