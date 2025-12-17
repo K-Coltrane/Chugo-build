@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingHorizontal: 25,
-    paddingTop: 60,
+    paddingTop: 75,
     alignItems: "center",
   },
   imagesContainer: {
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     position: "relative",
     backgroundColor: "rgba(184, 254, 34, 0.17)",
     borderRadius: 20,
+    marginTop: 30,
   },
   image: {
     width: 180,
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
   },
   indicatorContainer: {
     flexDirection: "row",
-    marginTop: 150,
+    marginTop: 135,
   },
   dotActive: {
     width: 36,

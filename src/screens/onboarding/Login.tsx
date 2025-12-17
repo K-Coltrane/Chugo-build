@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Platform, KeyboardAvoidingView, ScrollView, StatusBar } from "react-native";
-import CheckBox from "@react-native-community/checkbox";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Platform, KeyboardAvoidingView, ScrollView } from "react-native";
 import emailIcon from "../../../assets/icons/mail_icon.png";
 import lockIcon from "../../../assets/icons/password_icon.png";
 const Login = ({ navigation }: any) => {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [agree, setAgree] = useState(false);
 
   return (
-    <>
-      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     <KeyboardAvoidingView 
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -34,43 +28,50 @@ const Login = ({ navigation }: any) => {
 
         {/* Registration Card */}
         <View style={styles.card}>
-          
-          <View style={styles.inputRow}>
-          <Image source={emailIcon} style={styles.icon} />
-            <TextInput
-              placeholder="Email"
-              value={email}
-              onChangeText={setEmail}
-              keyboardType="email-address"
-              style={styles.input}
-              placeholderTextColor="#7B7B7B"
-            />
+          {/* Inputs */}
+          <View>
+            <View style={styles.inputRow}>
+              <Image source={emailIcon} style={styles.icon} />
+              <TextInput
+                placeholder="Email"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                style={styles.input}
+                placeholderTextColor="#7B7B7B"
+              />
+            </View>
+            <View style={styles.inputRow}>
+              <Image source={lockIcon} style={styles.icon} />
+              <TextInput
+                placeholder="Password"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+                style={styles.input}
+                placeholderTextColor="#7B7B7B"
+              />
+            </View>
           </View>
-          <View style={styles.inputRow}>
-            <Image source={lockIcon} style={styles.icon} />
-            <TextInput
-              placeholder="Password"
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry
-              style={styles.input}
-              placeholderTextColor="#7B7B7B"
-            />
+
+          {/* Actions (kept low to match Signup's button position) */}
+          <View style={styles.actions}>
+            <TouchableOpacity style={styles.registerBtn}>
+              <Text style={styles.registerBtnText}>Login</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.useBtn} onPress={() => navigation.navigate("UseOTP")}>
+              <Text style={styles.useBtnText}>Use OTP Login</Text>
+            </TouchableOpacity>
+            <Text style={styles.loginText}>
+              Don't have an account?{" "}
+              <Text style={styles.loginLink} onPress={() => navigation.navigate("Signup")}>
+                Register
+              </Text>
+            </Text>
           </View>
-         
-          <TouchableOpacity style={styles.registerBtn}>
-            <Text style={styles.registerBtnText}>Login</Text>
-          </TouchableOpacity>
-            <TouchableOpacity style={styles.useBtn} onPress={() => navigation.navigate('UseOTP')}>
-            <Text style={styles.useBtnText}>Use OTP Login</Text>
-          </TouchableOpacity>
-          <Text style={styles.loginText}>
-            Don't have an account? <Text style={styles.loginLink} onPress={() => navigation.navigate('Signup')}>Register</Text>
-          </Text>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
-    </>
   );
 };
 
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
+    paddingBottom: 16,
   },
   header: {
     height: 300,
@@ -138,25 +140,27 @@ const styles = StyleSheet.create({
   
   },
   card: {
-    marginTop: 32,
+    marginTop: 64,
     backgroundColor: "#fff",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingVertical: 24,
-    paddingHorizontal: 18,
+    paddingHorizontal: 20,
     flex: 1,
-    alignItems: "center",
+    alignItems: "stretch",
+    width: "100%",
+    alignSelf: "stretch",
+    justifyContent: "space-between",
       },
   inputRow: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "rgba(245, 245, 245, 1)",
     borderRadius: 100,
-    width: 391,
+    width: "100%",
     height: 68,
-    marginVertical: -30,
     paddingHorizontal: 12,
-    marginTop: 60,
+    marginVertical: 7,
   },
   icon: {
     fontSize: 18,
@@ -194,11 +198,11 @@ const styles = StyleSheet.create({
   registerBtn: {
     backgroundColor: "rgba(184, 254, 34, 1)",
     borderRadius: 100,
-    width: 391,
+    width: "100%",
     height: 68,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 70,
+    marginTop: 10,
     marginBottom: 8,
   },
   registerBtnText: {
@@ -210,7 +214,7 @@ const styles = StyleSheet.create({
    useBtn: {
     backgroundColor: "rgba(245, 245, 245, 1)",
     borderRadius: 100,
-    width: 391,
+    width: "100%",
     height: 68,
     justifyContent: "center",
     alignItems: "center",
@@ -223,10 +227,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "Inter",
   },
+  actions: {
+    paddingTop: 10,
+  },
   loginText: {
     fontSize: 15,
     color: "rgba(55, 73, 87, 1)",
-    marginTop: -5,
+    marginTop: 4,
     textAlign: "center",
     fontFamily: "Inter",
   },

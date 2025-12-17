@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, Image, SafeAreaView, StatusBar, ScrollView, Alert, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, Image, SafeAreaView, StatusBar, ScrollView, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import SwipeBackWrapper from '../../components/SwipeBackWrapper';
 import MenuModal from '../../components/MenuModal';
 import { launchImageLibrary, ImagePickerResponse, MediaType } from 'react-native-image-picker';
@@ -64,8 +63,6 @@ const RatingScreen = () => {
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.headerRow}>
-          <View style={{ width: 24 }} />
-          <View style={{ flex: 1 }} />
           <TouchableOpacity 
             onPress={() => {
               if (navigation.canGoBack()) {
@@ -88,7 +85,7 @@ const RatingScreen = () => {
           </View>
           {/* Rating */}
           <View style={styles.ratingSection}>
-            <Text style={styles.caption}>You'r overall rating</Text>
+            <Text style={styles.caption}>Your overall rating</Text>
             <View style={styles.starRow}>
               {stars.map(s => (
                 <TouchableOpacity 
@@ -119,24 +116,10 @@ const RatingScreen = () => {
             />
           </View>
 
-          {/* Add photo */}
-          <TouchableOpacity style={styles.addPhotoRow} activeOpacity={0.7} onPress={handleImagePicker}>
-            <Image source={require("../../../assets/icons/photo.png")} style={styles.photoIcon} />
-            <Text style={styles.addPhotoText}>Add photo</Text>
-          </TouchableOpacity>
+      
 
-          {/* Display selected image */}
-          {selectedImage && (
-            <View style={styles.imagePreviewContainer}>
-              <Image source={{ uri: selectedImage }} style={styles.imagePreview} />
-              <TouchableOpacity 
-                style={styles.removeImageButton}
-                onPress={() => setSelectedImage(null)}
-              >
-                <Text style={styles.removeImageText}>×</Text>
-              </TouchableOpacity>
-            </View>
-          )}
+        
+        
 
           {/* Submit button */}
           <TouchableOpacity style={styles.primaryButton} activeOpacity={0.8}>
@@ -172,67 +155,70 @@ const RatingScreen = () => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "rgba(246, 246, 246, 1)",
+    backgroundColor: "#FFFFFF",
   },
   container: {
     flex: 1,
-    backgroundColor: '#FAFAFA',
+    backgroundColor: '#FFFFFF',
   },
   headerRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: 16,
+    alignItems: "flex-end",
+    paddingTop: 10,
+    paddingBottom: 6,
     paddingHorizontal: 20,
-    marginTop: 20,
+    marginTop: 40,
   },
   closeIcon: {
     fontSize: 20,
     color: "#111827",
-    fontWeight: "300",
-    lineHeight: 20,
-    transform: [{ rotate: '45deg' }],
+    fontWeight: "400",
+    lineHeight: 22,
   },
   scrollContent: {
     paddingHorizontal: 20,
-    paddingBottom: 20,
+    paddingBottom: 10,
   },
   titleContainer: {
     alignItems: 'center',
-    marginTop: 60,
-    marginBottom: 24,
+    marginTop: 50,
+    marginBottom: 18,
   },
   title: {
     fontSize: 32,
     lineHeight: 32,
     fontFamily: 'Inter',
-    fontWeight: '600',
+    fontWeight: '500',
     color: '#111827',
     textAlign: 'center',
-    marginTop: 30,
   },
   ratingSection: {
-    marginTop: 24,
+    marginTop: 4,
     alignItems: 'center',
+    paddingBottom: 22,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E7EB',
   },
   caption: {
     fontSize: 18,
     color: '#6B7280',
-    marginBottom: -5,
-    marginTop: 50,
+    marginBottom: 10,
     textAlign: 'center',
+    marginTop: 60,
   },
   starRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 100,
   },
   starButton: {
-    marginRight: 8,
-    padding: 4,
+    marginHorizontal: 6,
+    paddingVertical: 4,
+    paddingHorizontal: 2,
   },
   star: {
     fontSize: 55,
+    lineHeight: 44,
   },
   starFilled: {
     color: '#081528',
@@ -241,95 +227,56 @@ const styles = StyleSheet.create({
     color: '#D9D9D9',
   },
   reviewSection: {
-    marginTop: 32,
-    borderTopWidth: 1,
-    borderTopColor: '#37495717',
-    paddingTop: 30,
+    paddingTop: 22,
   },
   sectionLabel: {
     fontSize: 20,
     fontWeight: '400',
     color: '#142032',
-    marginBottom: 12,
-    lineHeight: 20,
-    marginTop: -1,
+    marginTop: 10,
+    marginBottom: 10,
+    lineHeight: 18,
   },
   textArea: {
     borderWidth: 1,
     borderColor: '#E5E7EB',
-    borderRadius: 10,
-    padding: 16,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 12,
     height: 176,
+    width: 380,
     textAlignVertical: 'top',
     fontSize: 14,
     color: '#111827',
     backgroundColor: '#fff',
   },
-  addPhotoRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 16,
-    padding: 16,
-  },
-  photoIcon: {
-    width: 18,
-    height: 18,
-    resizeMode: 'contain',
-  },
-  addPhotoText: {
-    marginLeft: 8,
-    fontSize: 14,
-    color: '#142032',
-    fontWeight: '500',
-    fontFamily: 'Inter',
-  },
-  imagePreviewContainer: {
-    marginTop: 16,
-    position: 'relative',
-    alignItems: 'center',
-  },
-  imagePreview: {
-    width: 200,
-    height: 200,
-    borderRadius: 12,
-    resizeMode: 'cover',
-  },
-  removeImageButton: {
-    position: 'absolute',
-    top: -8,
-    right: -8,
-    backgroundColor: '#111827',
-    borderRadius: 15,
-    width: 30,
-    height: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  removeImageText: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
+  
+ 
+  
+ 
+  
   primaryButton: {
     backgroundColor: '#081528',
-    paddingVertical: 16,
+    paddingVertical: 14,
     borderRadius: 100,
     alignItems: 'center',
-    marginTop: 32,
-    marginBottom: 20,
+    marginTop: 26,
+    marginBottom: 18,
+    height: 68,
   },
   primaryButtonText: {
     color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 20,
+    fontWeight: '500',
+    marginTop: 5,
   },
   bottomNav: {
     width: "100%",
     height: 65,
-    backgroundColor: "#f6f6f6",
+    backgroundColor: "#FFFFFF",
     flexDirection: "row",
     borderTopWidth: 1,
-    borderColor: "#F2F3F7",
+    borderColor: "#EEF0F3",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 0,

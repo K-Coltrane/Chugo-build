@@ -17,16 +17,14 @@ const SwipeBackWrapper: React.FC<SwipeBackWrapperProps> = ({ children, enabled =
 
   const panResponder = useRef(
     PanResponder.create({
-      onStartShouldSetPanResponder: (evt) => {
-        if (!enabled) return false;
-        // Only capture if touch starts near the left edge (first 30px)
-        const touchX = evt.nativeEvent.pageX || evt.nativeEvent.locationX || 0;
-        return touchX < 30;
-      },
+      // Important: don't steal simple taps (it can make buttons feel "not working").
+      // We'll only become responder once we detect an actual swipe in onMoveShouldSetPanResponder.
+      onStartShouldSetPanResponder: () => false,
       onMoveShouldSetPanResponder: (evt, gestureState) => {
         if (!enabled) return false;
         // Only respond to rightward horizontal swipes from the left edge
-        const touchX = evt.nativeEvent.pageX || evt.nativeEvent.locationX || 0;
+        // Use nullish coalescing so a valid 0 value isn't treated as "missing".
+        const touchX = (evt.nativeEvent.pageX ?? evt.nativeEvent.locationX ?? 0) as number;
         return touchX < 30 && gestureState.dx > 15 && Math.abs(gestureState.dy) < Math.abs(gestureState.dx) * 2;
       },
       onPanResponderGrant: () => {
@@ -97,7 +95,8 @@ const SwipeBackWrapper: React.FC<SwipeBackWrapperProps> = ({ children, enabled =
           }),
         ]).start();
       },
-      onPanResponderTerminationRequest: () => false,
+      // Allow other responders to take over if needed (e.g. nested touchables/scroll views).
+      onPanResponderTerminationRequest: () => true,
     })
   ).current;
 

@@ -261,36 +261,35 @@ const PaymentScreen: React.FC = () => {
             style={modalStyles.overlay}
             onPress={() => setMomoModalVisible(false)}
           >
-            <TouchableWithoutFeedback>
-              <View style={modalStyles.modalContent}>
-                <View style={modalStyles.swipeHandle} />
-                <View style={modalStyles.inputField}>
-                  <View style={modalStyles.dropdown}>
-                    <Text
-                      style={modalStyles.dropdownText}
-                      onPress={() =>
-                        setMomoNetwork(momoNetwork === "" ? "MTN" : "")
-                      }
-                    >
-                      {momoNetwork ? momoNetwork : "Network  type"}
-                    </Text>
-                    <Text style={modalStyles.dropdownCaret}>▼</Text>
-                  </View>
+            {/* Inner Pressable prevents taps inside the sheet from closing the modal */}
+            <Pressable style={modalStyles.modalContent} onPress={() => {}}>
+              <View style={modalStyles.swipeHandle} />
+              <View style={modalStyles.inputField}>
+                <View style={modalStyles.dropdown}>
+                  <Text
+                    style={modalStyles.dropdownText}
+                    onPress={() =>
+                      setMomoNetwork(momoNetwork === "" ? "MTN" : "")
+                    }
+                  >
+                    {momoNetwork ? momoNetwork : "Network  type"}
+                  </Text>
+                  <Text style={modalStyles.dropdownCaret}>▼</Text>
                 </View>
-                <View style={modalStyles.inputField}>
-                  <TextInput
-                    style={modalStyles.input}
-                    placeholder="Momo number"
-                    value={momoNumber}
-                    onChangeText={setMomoNumber}
-                    keyboardType="phone-pad"
-                  />
-                </View>
-                <TouchableOpacity style={modalStyles.saveBtn} onPress={handleAddMomo}>
-                  <Text style={modalStyles.saveBtnText}>Save</Text>
-                </TouchableOpacity>
               </View>
-            </TouchableWithoutFeedback>
+              <View style={modalStyles.inputField}>
+                <TextInput
+                  style={modalStyles.input}
+                  placeholder="Momo number"
+                  value={momoNumber}
+                  onChangeText={setMomoNumber}
+                  keyboardType="phone-pad"
+                />
+              </View>
+              <TouchableOpacity style={modalStyles.saveBtn} onPress={handleAddMomo}>
+                <Text style={modalStyles.saveBtnText}>Save</Text>
+              </TouchableOpacity>
+            </Pressable>
           </Pressable>
         </Modal>
 
@@ -305,39 +304,38 @@ const PaymentScreen: React.FC = () => {
             style={modalStyles.overlay}
             onPress={() => setCardModalVisible(false)}
           >
-            <TouchableWithoutFeedback>
-              <View style={modalStyles.modalContent}>
-                <View style={modalStyles.swipeHandle} />
-                <View style={modalStyles.inputField}>
-                  <TextInput
-                    style={modalStyles.input}
-                    placeholder="Card number"
-                    value={cardNumber}
-                    onChangeText={setCardNumber}
-                    keyboardType="number-pad"
-                  />
-                </View>
-                <View style={{ flexDirection: "row", gap: 8 }}>
-                  <TextInput
-                    style={[modalStyles.input, { flex: 1 }]}
-                    placeholder="Expiry"
-                    value={cardExpiry}
-                    onChangeText={setCardExpiry}
-                  />
-                  <TextInput
-                    style={[modalStyles.input, { flex: 1 }]}
-                    placeholder="CVV"
-                    value={cardCvv}
-                    onChangeText={setCardCvv}
-                    keyboardType="number-pad"
-                    secureTextEntry
-                  />
-                </View>
-                <TouchableOpacity style={modalStyles.saveBtn} onPress={handleAddCard}>
-                  <Text style={modalStyles.saveBtnText}>Save</Text>
-                </TouchableOpacity>
+            {/* Inner Pressable prevents taps inside the sheet from closing the modal */}
+            <Pressable style={modalStyles.modalContent} onPress={() => {}}>
+              <View style={modalStyles.swipeHandle} />
+              <View style={modalStyles.inputField}>
+                <TextInput
+                  style={modalStyles.input}
+                  placeholder="Card number"
+                  value={cardNumber}
+                  onChangeText={setCardNumber}
+                  keyboardType="number-pad"
+                />
               </View>
-            </TouchableWithoutFeedback>
+              <View style={{ flexDirection: "row", gap: 8 }}>
+                <TextInput
+                  style={[modalStyles.input, { flex: 1 }]}
+                  placeholder="Expiry"
+                  value={cardExpiry}
+                  onChangeText={setCardExpiry}
+                />
+                <TextInput
+                  style={[modalStyles.input, { flex: 1 }]}
+                  placeholder="CVV"
+                  value={cardCvv}
+                  onChangeText={setCardCvv}
+                  keyboardType="number-pad"
+                  secureTextEntry
+                />
+              </View>
+              <TouchableOpacity style={modalStyles.saveBtn} onPress={handleAddCard}>
+                <Text style={modalStyles.saveBtnText}>Save</Text>
+              </TouchableOpacity>
+            </Pressable>
           </Pressable>
         </Modal>
 
@@ -623,14 +621,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "300",
     color: "rgba(20, 32, 50, 1)",
-    marginTop: 40 
+    marginTop: 20 
   },
 
   rowValue: { 
     fontSize: 20,
     fontWeight: "500",
     color: "rgba(20, 32, 50, 1)",
-    marginTop: 40 
+    marginTop: 20 
   },
 
   checkoutBtn: { 
