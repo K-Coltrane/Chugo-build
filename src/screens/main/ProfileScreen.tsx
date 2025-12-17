@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { 
-  View, Text, StyleSheet, TextInput, Image, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, StatusBar, Modal, FlatList
+  View, Text, StyleSheet, TextInput, Image, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, StatusBar, Modal, FlatList, Alert
 } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native"; // <-- Import added
 import MenuModal from "../../components/MenuModal";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+import { launchImageLibrary, ImagePickerResponse, MediaType } from "react-native-image-picker";
 // Dummy navigation bar icons – replace with your own!
 const TAB_ICONS = [
   { key: "home", label: "Home", route: "Home", icon: require("../../../assets/icons/home.png") },
@@ -35,6 +36,7 @@ const ProfileScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [countryModalVisible, setCountryModalVisible] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
+  const [profileImageUri, setProfileImageUri] = useState<string | null>(null);
 
   const navigation = useNavigation(); // <-- Fixed
   const [menuVisible, setMenuVisible] = useState(false);
@@ -46,6 +48,24 @@ const ProfileScreen = () => {
       // @ts-ignore
       navigation.navigate(route);
     }
+  };
+
+  const handlePickProfilePhoto = () => {
+    const options = {
+      mediaType: "photo" as MediaType,
+      quality: 0.8 as const,
+      includeBase64: false,
+    };
+
+    launchImageLibrary(options, (response: ImagePickerResponse) => {
+      if (response.didCancel) return;
+      if (response.errorMessage) {
+        Alert.alert("Error", response.errorMessage);
+        return;
+      }
+      const uri = response.assets?.[0]?.uri;
+      if (uri) setProfileImageUri(uri);
+    });
   };
 
   return (
@@ -87,14 +107,11 @@ const ProfileScreen = () => {
           {/* Avatar */}
           <View style={styles.avatarBox}>
             <Image
-              source={{ uri: "https://randomuser.me/api/portraits/men/1.jpg" }}
+              source={profileImageUri ? { uri: profileImageUri } : require("../../../assets/images/avatar.png")}
               style={styles.avatarImg}
             />
-            <TouchableOpacity style={styles.avatarCircle}>
-              <Image
-                source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Pencil_icon.png" }}
-                style={styles.editIcon}
-              />
+            <TouchableOpacity style={styles.avatarCircle} activeOpacity={0.8} onPress={handlePickProfilePhoto}>
+              <Text style={styles.editIconText}>✎</Text>
             </TouchableOpacity>
           </View>
 
@@ -294,10 +311,12 @@ const styles = StyleSheet.create({
     height: 29,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "transparent",
+    backgroundColor: "#FFFFFF",
     borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#E5E7EB",
   },
-  editIcon: { width: 19, height: 19 },
+  editIconText: { fontSize: 16, color: "#111827", fontWeight: "600", marginTop: -1 },
 
   formGroup: { paddingHorizontal: 20, marginTop: 2 },
   label: { color: "rgba(55, 73, 87, 1)", fontSize: 20, marginTop: 14, fontWeight: "400" },

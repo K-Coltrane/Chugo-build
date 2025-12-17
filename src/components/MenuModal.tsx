@@ -204,12 +204,13 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
+    bottom: 40,
     width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
+    
     backgroundColor: "rgba(0,0,0,0.06)",
     zIndex: 1,
-    bottom: 40,
+    
+    
   },
   sheet: {
     position: "absolute",
