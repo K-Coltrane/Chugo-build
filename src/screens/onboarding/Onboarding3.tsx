@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingHorizontal: 25,
-    paddingTop: 60,
+    paddingTop: 75,
     alignItems: "center",
   },
   imagesContainer: {
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     position: "relative",
     backgroundColor: "rgba(184, 254, 34, 0.17)",
     borderRadius: 20,
+    marginTop: 10,
   },
   image: {
     width: 180,
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
   },
   indicatorContainer: {
     flexDirection: "row",
-    marginTop: 150,
+    marginTop: 135,
   },
   dotActive: {
     width: 36,
@@ -120,13 +121,14 @@ const styles = StyleSheet.create({
 
   primaryBtn: {
     backgroundColor: "rgba(184, 254, 34, 1)",
-    width: 391,
+    width: "100%",
     height: 68,
     borderRadius: 100,
     alignItems: "center",
     paddingVertical: 16,
     marginBottom: 12,
     marginTop: 5,
+    alignSelf: "stretch",
   },
   primaryBtnText: {
     color: "rgba(55, 73, 87, 1)",
@@ -137,11 +139,12 @@ const styles = StyleSheet.create({
   },
   secondaryBtn: {
     backgroundColor: "rgba(245, 245, 245, 1)",
-    width: 391,
+    width: "100%",
     borderRadius: 100,
     alignItems: "center",
     paddingVertical: 16,
     marginBottom: 6,
+    alignSelf: "stretch",
   },
   secondaryBtnText: {
     color: "rgba(55, 73, 87, 1)",

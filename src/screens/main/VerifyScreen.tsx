@@ -5,7 +5,8 @@ import MenuModal from "../../components/MenuModal";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
-const SCAN_BUTTON_WIDTH = 391;
+// Keep the Scan button from spanning edge-to-edge on smaller phones.
+const SCAN_BUTTON_WIDTH = Math.min(320, SCREEN_WIDTH - 40);
 const SCAN_BUTTON_LEFT = (SCREEN_WIDTH - SCAN_BUTTON_WIDTH) / 2;
 
 const TAB_ICONS = [

@@ -379,6 +379,7 @@ const styles = StyleSheet.create({
     color: "rgba(20, 32, 50, 1)",
     fontWeight: "500",
     fontFamily: 'Inter',
+    marginTop: -20,
   },
   summaryValue: {
     fontSize: 20,

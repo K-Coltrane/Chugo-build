@@ -42,42 +42,52 @@ const OTP = ({ navigation }: any) => {
 
       {/* Registration Card */}
       <View style={styles.card}>
-        {/* OTP Boxes */}
-        <View style={styles.otpContainer}>
-          {otp.map((value, index) => (
-            <TextInput
-              key={index}
-              style={styles.otpBox}
-              keyboardType="number-pad"
-              maxLength={1}
-              value={value}
-              onChangeText={(text) => handleOtpChange(text, index)}
-            />
-          ))}
+        {/* Top content (inputs + buttons) */}
+        <View>
+          {/* OTP Boxes */}
+          <View style={styles.otpContainer}>
+            {otp.map((value, index) => (
+              <TextInput
+                key={index}
+                style={styles.otpBox}
+                keyboardType="number-pad"
+                maxLength={1}
+                value={value}
+                onChangeText={(text) => handleOtpChange(text, index)}
+              />
+            ))}
+          </View>
+
+          {/* Timer Section (below boxes) */}
+          <View style={styles.timerContainer}>
+            {canResend ? (
+              <TouchableOpacity onPress={handleResend}>
+                <Text style={styles.resendText}>Resend Code</Text>
+              </TouchableOpacity>
+            ) : (
+              <Text style={styles.timerText}>Resend in {timer}s</Text>
+            )}
+          </View>
+
+          {/* Buttons back under the inputs */}
+          <TouchableOpacity style={styles.registerBtn}>
+            <Text style={styles.registerBtnText}>Verify OTP</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.useBtn} onPress={() => navigation.navigate("Login")}>
+            <Text style={styles.useBtnText}>Use Email Login</Text>
+          </TouchableOpacity>
         </View>
 
-        {/* Timer Section (below boxes) */}
-        <View style={styles.timerContainer}>
-          {canResend ? (
-            <TouchableOpacity onPress={handleResend}>
-              <Text style={styles.resendText}>Resend Code</Text>
-            </TouchableOpacity>
-          ) : (
-            <Text style={styles.timerText}>Resend in {timer}s</Text>
-          )}
+        {/* Keep the "Don't have an account?" text down where it is */}
+        <View style={styles.bottomTextWrap}>
+          <Text style={styles.loginText}>
+            Don’t have an account?{" "}
+            <Text style={styles.loginLink} onPress={() => navigation.navigate("Signup")}>
+              Register
+            </Text>
+          </Text>
         </View>
-
-        <TouchableOpacity style={styles.registerBtn}>
-          <Text style={styles.registerBtnText}>Verify OTP</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.useBtn}onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.useBtnText}>Use Email Login</Text>
-        </TouchableOpacity>
-
-        <Text style={styles.loginText}>
-          Don’t have an account? <Text style={styles.loginLink }onPress={() => navigation.navigate('Signup')}>Register</Text>
-        </Text>
       </View>
     </View>
   );
@@ -135,23 +145,27 @@ const styles = StyleSheet.create({
     fontFamily: "Inter",
   },
   card: {
-    marginTop: 32,
+    marginTop: 64,
     backgroundColor: "rgba(255, 255, 255, 1)",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingVertical: 24,
-    paddingHorizontal: 18,
+    paddingHorizontal: 20,
     flex: 1,
-    alignItems: "center",
+    alignItems: "stretch",
+    width: "100%",
+    alignSelf: "stretch",
   },
   otpContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 90,
-    width: 380,
+    marginTop: 40,
+    width: "100%",
   },
   otpBox: {
-    width: 65,
+    width: "18%",
+    maxWidth: 70,
+    minWidth: 44,
     height: 68,
     backgroundColor: "rgba(245, 245, 245, 1)",
     borderRadius: 12,
@@ -162,26 +176,29 @@ const styles = StyleSheet.create({
     
   },
   timerContainer: {
-    marginTop: 20,
+    marginTop: 16,
+    alignItems: "center",
   },
   timerText: {
     fontSize: 16,
-    color: "rrgba(55, 73, 87, 1)",
+    color: "rgba(55, 73, 87, 1)",
     fontWeight: "500",
+    textAlign: "center",
   },
   resendText: {
     fontSize: 16,
     color: "rgba(55, 73, 87, 1)",
     fontWeight: "700",
+    textAlign: "center",
   },
   registerBtn: {
     backgroundColor: "rgba(184, 254, 34, 1)",
     borderRadius: 100,
-    width: 391,
+    width: "100%",
     height: 68,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 50,
+    marginTop: 10,
     marginBottom: 8,
   },
   registerBtnText: {
@@ -193,12 +210,16 @@ const styles = StyleSheet.create({
   useBtn: {
     backgroundColor: "rgba(245, 245, 245, 1)",
     borderRadius: 100,
-    width: 391,
+    width: "100%",
     height: 68,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 12,
     marginBottom: 8,
+  },
+  bottomTextWrap: {
+    flex: 1,
+    justifyContent: "flex-end",
   },
   useBtnText: {
     color: "rgba(55, 73, 87, 1)",

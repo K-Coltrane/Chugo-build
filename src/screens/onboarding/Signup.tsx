@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
+    paddingBottom: 16,
   },
   header: {
     height: 300,
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
     color: "rgba(255, 255, 255, 1)",
     fontSize: 32,
     fontWeight: "700",
-    marginTop: 54,
+    marginTop: 70,
     textAlign: "center",
     fontFamily: "Inter",
   },
@@ -167,21 +168,23 @@ const styles = StyleSheet.create({
   
   },
   card: {
-    marginTop: 32,
+    marginTop: 64,
     backgroundColor: "#fff",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingVertical: 24,
-    paddingHorizontal: 18,
+    paddingHorizontal: 20,
     flex: 1,
-    alignItems: "center",
+    alignItems: "stretch",
+    width: "100%",
+    alignSelf: "stretch",
       },
   inputRow: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "rgba(245, 245, 245, 1)",
     borderRadius: 100,
-    width: 391,
+    width: "100%",
     height: 68,
     marginVertical: 7,
     paddingHorizontal: 12,
@@ -222,11 +225,11 @@ const styles = StyleSheet.create({
   registerBtn: {
     backgroundColor: "rgba(184, 254, 34, 1)",
     borderRadius: 100,
-    width: 391,
+    width: "100%",
     height: 68,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: -10,
+    marginTop: 10,
     marginBottom: 8,
   },
   registerBtnText: {
@@ -238,7 +241,7 @@ const styles = StyleSheet.create({
   loginText: {
     fontSize: 15,
     color: "rgba(55, 73, 87, 1)",
-    marginTop: -5,
+    marginTop: 4,
     textAlign: "center",
     fontFamily: "Inter",
   },

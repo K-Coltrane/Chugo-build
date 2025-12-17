@@ -27,6 +27,7 @@ import RatingScreen from "../screens/main/RatingScreen.tsx";
 import TrackingScreen from "../screens/main/Tracking.tsx";
 import VerifyScreen from "../screens/main/VerifyScreen.tsx";
 import FilterScreen from "../screens/main/FilterScreen.tsx";
+import MenuScreen from "../screens/main/MenuScreen.tsx";
 
 const Stack = createNativeStackNavigator();
 
@@ -57,6 +58,7 @@ const OnboardingStack = () => {
        <Stack.Screen name="VerifyScreen" component={VerifyScreen} />
        <Stack.Screen name="TrackingScreen" component={TrackingScreen} />
        <Stack.Screen name="FilterScreen" component={FilterScreen} />
+       <Stack.Screen name="Menu" component={MenuScreen} />
     </Stack.Navigator>
   );
 };
