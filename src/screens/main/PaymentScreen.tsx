@@ -15,6 +15,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+import { scaleWidth, scaleHeight, scaleFont, scaleSize } from "../../utils/responsive";
 
 interface PaymentMethod {
   id: string;
@@ -113,7 +114,7 @@ const PaymentScreen: React.FC = () => {
             <Text style={styles.backArrow}>←</Text>
           </TouchableOpacity>
           <Text style={styles.header}>Payment</Text>
-          <View style={{ width: 24 }} />
+          <View style={{ width: scaleWidth(24) }} />
         </View>
 
         {/* Delivery Card */}
@@ -316,7 +317,7 @@ const PaymentScreen: React.FC = () => {
                   keyboardType="number-pad"
                 />
               </View>
-              <View style={{ flexDirection: "row", gap: 8 }}>
+              <View style={{ flexDirection: "row", gap: scaleWidth(8) }}>
                 <TextInput
                   style={[modalStyles.input, { flex: 1 }]}
                   placeholder="Expiry"
@@ -379,7 +380,7 @@ const styles = StyleSheet.create({
   },
   container: { 
     flex: 1, 
-    padding: 14, 
+    padding: scaleWidth(14), 
     backgroundColor: "rgba(246, 246, 246, 1)" 
   },
 
@@ -387,28 +388,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    paddingHorizontal: 18,
-    height: 60,
-    marginTop: 20,  
+    paddingVertical: scaleHeight(12),
+    paddingHorizontal: scaleWidth(18),
+    height: scaleHeight(60),
+    marginTop: scaleHeight(20),  
   },
   backButton: {
-    width: 30,
-    height: 80,
+    width: scaleWidth(30),
+    height: scaleHeight(80),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    marginTop: -10,
+    marginTop: scaleHeight(-10),
   },
   backArrow: {
-    fontSize: 42,
+    fontSize: scaleFont(42),
     color: "#1c1c1c",
     fontWeight: "700",
-    lineHeight: 42,
+    lineHeight: scaleFont(42),
   },
   header: { 
     flex: 1,
-    fontSize: 20, 
+    fontSize: scaleFont(20), 
     fontWeight: "600", 
     color: "rgba(55, 73, 87, 1)", 
     textAlign: "center",
@@ -416,9 +417,9 @@ const styles = StyleSheet.create({
 
   card: { 
     backgroundColor: "#fff",
-    borderRadius: 16, 
-    padding: 14, 
-    marginBottom: 14,
+    borderRadius: scaleSize(16), 
+    padding: scaleWidth(14), 
+    marginBottom: scaleHeight(14),
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -441,26 +442,26 @@ const styles = StyleSheet.create({
   },
 
   radioCircle: { 
-    width: 22, 
-    height: 22, 
-    borderRadius: 11,
+    width: scaleSize(22), 
+    height: scaleSize(22), 
+    borderRadius: scaleSize(11),
     borderWidth: 2, 
     borderColor: "#bbb",
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    marginRight: 12 
+    marginRight: scaleWidth(12) 
   },
 
   radioDot: { 
-    width: 12, 
-    height: 12,
-    borderRadius: 6,
+    width: scaleSize(12), 
+    height: scaleSize(12),
+    borderRadius: scaleSize(6),
     backgroundColor: "#111" 
   },
 
   cardTitle: { 
-    fontSize: 18, 
+    fontSize: scaleFont(18), 
     fontWeight: "bold" 
   },
 
@@ -474,40 +475,40 @@ const styles = StyleSheet.create({
 
   cardSubtitle: { 
     color: "#bababa",
-    fontSize: 14, 
-    marginTop: 2 
+    fontSize: scaleFont(14), 
+    marginTop: scaleHeight(2) 
   },
 
   editBtn: { 
-    paddingVertical: 2, 
-    paddingHorizontal: 10, 
-    borderRadius: 8 
+    paddingVertical: scaleHeight(2), 
+    paddingHorizontal: scaleWidth(10), 
+    borderRadius: scaleSize(8) 
   },
 
   editText: { 
-    fontSize: 15, 
+    fontSize: scaleFont(15), 
     color: "#bababa" 
   },
 
   addBtnsRow: { 
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 4, 
-    marginBottom: 16 
+    marginTop: scaleHeight(4), 
+    marginBottom: scaleHeight(16) 
   },
 
   addBtn: { 
     flex: 1,
-    marginHorizontal: 5,
+    marginHorizontal: scaleWidth(5),
     backgroundColor: "#fff",
-    borderRadius: 8,
+    borderRadius: scaleSize(8),
     alignItems: "center",
     justifyContent: "center",
-    padding: 12,
+    padding: scaleWidth(12),
     shadowColor: "#e2ffed",
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowRadius: scaleSize(2),
     elevation: 2 
   },
 
@@ -518,33 +519,33 @@ const styles = StyleSheet.create({
   },
 
   plusCircle: { 
-    width: 44, 
-    height: 44, 
-    borderRadius: 22,
+    width: scaleSize(44), 
+    height: scaleSize(44), 
+    borderRadius: scaleSize(22),
     backgroundColor: "rgba(184, 254, 34, 1)", 
     alignItems: "center",
     justifyContent: "center",
-    marginRight: 8 
+    marginRight: scaleWidth(8) 
   },
 
   plusText: { 
     color: "rgba(20, 32, 50, 1)", 
     fontWeight: "400",
-    fontSize: 32,
-    lineHeight: 32 
+    fontSize: scaleFont(32),
+    lineHeight: scaleFont(32) 
   },
 
   addBtnText: { 
     color: "rgba(20, 32, 50, 1)", 
     fontWeight: "bold", 
-    fontSize: 16 
+    fontSize: scaleFont(16) 
   },
 
   sectionHeader: { 
-    fontSize: 20, 
+    fontSize: scaleFont(20), 
     fontWeight: "500",
-    marginTop: 20, 
-    marginBottom: 10,
+    marginTop: scaleHeight(20), 
+    marginBottom: scaleHeight(10),
     color: "rgba(20, 32, 50, 1)" 
   },
 
@@ -553,12 +554,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     backgroundColor: "#fff",
-    borderRadius: 10,
-    padding: 9,
-    marginBottom: 8,
+    borderRadius: scaleSize(10),
+    padding: scaleWidth(9),
+    marginBottom: scaleHeight(8),
     borderWidth: 1,
     borderColor: "#EEE",
-    height: 56 
+    height: scaleHeight(56) 
   },
 
   payMethodLeft: { 
@@ -567,10 +568,10 @@ const styles = StyleSheet.create({
   },
 
   payLogo: { 
-    width: 34,
-    height: 27,
-    borderRadius: 6,
-    marginRight: 10,
+    width: scaleWidth(34),
+    height: scaleHeight(27),
+    borderRadius: scaleSize(6),
+    marginRight: scaleWidth(10),
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#eee" 
@@ -583,11 +584,11 @@ const styles = StyleSheet.create({
   logoText: { 
     color: "#fff",
     fontWeight: "bold",
-    fontSize: 13 
+    fontSize: scaleFont(13) 
   },
 
   payMethodText: { 
-    fontSize: 15, 
+    fontSize: scaleFont(15), 
     color: "#232630", 
     fontWeight: "500" 
   },
@@ -595,54 +596,54 @@ const styles = StyleSheet.create({
   payMethodIcons: { 
     flexDirection: "row", 
     alignItems: "center",
-    gap: 10 
+    gap: scaleWidth(10) 
   },
 
   checkMark: { 
-    fontSize: 18,
+    fontSize: scaleFont(18),
     color: "#789933",
-    marginRight: 10 
+    marginRight: scaleWidth(10) 
   },
 
   deleteIcon: { 
-    fontSize: 18, 
+    fontSize: scaleFont(18), 
     color: "#bbb",
-    marginLeft: 10 
+    marginLeft: scaleWidth(10) 
   },
 
   row: { 
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 8, 
-    marginBottom: 4 
+    marginTop: scaleHeight(8), 
+    marginBottom: scaleHeight(4) 
   },
 
   rowLabel: { 
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "300",
     color: "rgba(20, 32, 50, 1)",
-    marginTop: 20 
+    marginTop: scaleHeight(20) 
   },
 
   rowValue: { 
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "500",
     color: "rgba(20, 32, 50, 1)",
-    marginTop: 20 
+    marginTop: scaleHeight(20) 
   },
 
   checkoutBtn: { 
     backgroundColor: "rgba(8, 21, 40, 1)",
-    borderRadius: 100,
+    borderRadius: scaleSize(100),
     alignItems: "center",
-    paddingVertical: 18,
-    height: 68,
-    marginTop: 30 
+    paddingVertical: scaleHeight(18),
+    height: scaleHeight(68),
+    marginTop: scaleHeight(30) 
   },
 
   checkoutText: { 
     color: "#fff",
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "500" 
   }
 })
@@ -656,73 +657,73 @@ const modalStyles = StyleSheet.create({
 
   swipeHandle: { 
     alignSelf: "center",
-    width: 50,
-    height: 7,
-    borderRadius: 6,
+    width: scaleWidth(50),
+    height: scaleHeight(7),
+    borderRadius: scaleSize(6),
     backgroundColor: "#e2e2e2",
-    marginVertical: 12 
+    marginVertical: scaleHeight(12) 
   },
 
   modalContent: { 
     backgroundColor: "#fff",
-    padding: 22,
-    paddingBottom: 32,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    minHeight: 260,
+    padding: scaleWidth(22),
+    paddingBottom: scaleHeight(32),
+    borderTopLeftRadius: scaleSize(20),
+    borderTopRightRadius: scaleSize(20),
+    minHeight: scaleHeight(260),
     width: "100%" 
   },
 
   inputField: { 
-    marginBottom: 13 
+    marginBottom: scaleHeight(13) 
   },
 
   input: { 
     backgroundColor: "#fff",
-    borderRadius: 9,
+    borderRadius: scaleSize(9),
     borderWidth: 1,
     borderColor: "#dadada",
-    paddingVertical: 11,
-    paddingHorizontal: 13,
-    fontSize: 16 
+    paddingVertical: scaleHeight(11),
+    paddingHorizontal: scaleWidth(13),
+    fontSize: scaleFont(16) 
   },
 
   dropdown: { 
-    height: 43,
-    borderRadius: 9,
+    height: scaleHeight(43),
+    borderRadius: scaleSize(9),
     borderWidth: 1,
     borderColor: "#dadada",
     backgroundColor: "#fff",
-    paddingHorizontal: 13,
+    paddingHorizontal: scaleWidth(13),
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between" 
   },
 
   dropdownText: { 
-    fontSize: 15,
+    fontSize: scaleFont(15),
     color: "#242424",
     flex: 1 
   },
 
   dropdownCaret: { 
-    fontSize: 15, 
+    fontSize: scaleFont(15), 
     color: "#bababa",
-    marginLeft: 8,
-    marginTop: 2 
+    marginLeft: scaleWidth(8),
+    marginTop: scaleHeight(2) 
   },
 
   saveBtn: { 
     backgroundColor: "#101929",
-    borderRadius: 100,
+    borderRadius: scaleSize(100),
     alignItems: "center",
-    paddingVertical: 17,
-    marginTop: 18 
+    paddingVertical: scaleHeight(17),
+    marginTop: scaleHeight(18) 
   },
 
   saveBtnText: { 
     color: "#fff",
-    fontSize: 18,
+    fontSize: scaleFont(18),
     fontWeight: "600",
     letterSpacing: 0.2 
   }
@@ -738,64 +739,64 @@ const orderStyles = StyleSheet.create({
 
   modal: { 
     backgroundColor: "#fff",
-    borderRadius: 22,
-    paddingVertical: 28,
-    paddingHorizontal: 24,
+    borderRadius: scaleSize(22),
+    paddingVertical: scaleHeight(28),
+    paddingHorizontal: scaleWidth(24),
     alignItems: "center",
-    minWidth: 260,
+    minWidth: scaleWidth(260),
     maxWidth: "85%",
     shadowColor: "#222",
-    shadowOffset: { width: 2, height: 6 },
+    shadowOffset: { width: scaleWidth(2), height: scaleHeight(6) },
     shadowOpacity: 0.17,
-    shadowRadius: 18,
+    shadowRadius: scaleSize(18),
     elevation: 7 
   },
 
   checkCircle: { 
-    width: 64,
-    height: 64,
-    borderRadius: 32,
+    width: scaleSize(64),
+    height: scaleSize(64),
+    borderRadius: scaleSize(32),
     borderWidth: 2,
     borderColor: "#222",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 18 
+    marginBottom: scaleHeight(18) 
   },
 
   checkMark: { 
-    fontSize: 38,
+    fontSize: scaleFont(38),
     color: "#222",
     fontWeight: "bold",
-    marginTop: -2 
+    marginTop: scaleHeight(-2) 
   },
 
   orderTitle: { 
-    fontSize: 18,
+    fontSize: scaleFont(18),
     fontWeight: "500",
     color: "#232630",
     textAlign: "center",
-    marginBottom: 3 
+    marginBottom: scaleHeight(3) 
   },
 
   orderText: { 
-    fontSize: 15,
+    fontSize: scaleFont(15),
     color: "#888",
     textAlign: "center",
-    marginBottom: 25 
+    marginBottom: scaleHeight(25) 
   },
 
   button: { 
     backgroundColor: "#101929",
-    borderRadius: 100,
-    minWidth: 210,
+    borderRadius: scaleSize(100),
+    minWidth: scaleWidth(210),
     alignItems: "center",
-    paddingVertical: 14 
+    paddingVertical: scaleHeight(14) 
   },
 
   buttonText: { 
     color: "#fff",
     fontWeight: "600",
-    fontSize: 17,
+    fontSize: scaleFont(17),
     letterSpacing: 0.2 
   }
 })

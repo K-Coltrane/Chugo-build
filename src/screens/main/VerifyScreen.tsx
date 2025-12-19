@@ -3,10 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Image, Dimensio
 import { useNavigation } from "@react-navigation/native";
 import MenuModal from "../../components/MenuModal";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+import { scaleWidth, scaleHeight, scaleFont, scaleSize } from "../../utils/responsive";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 // Keep the Scan button from spanning edge-to-edge on smaller phones.
-const SCAN_BUTTON_WIDTH = Math.min(320, SCREEN_WIDTH - 40);
+const SCAN_BUTTON_WIDTH = Math.min(scaleWidth(320), SCREEN_WIDTH - scaleWidth(40));
 const SCAN_BUTTON_LEFT = (SCREEN_WIDTH - SCAN_BUTTON_WIDTH) / 2;
 
 const TAB_ICONS = [
@@ -53,7 +54,7 @@ const VerifyScreen = () => {
             <Text style={styles.backArrow}>←</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Verify</Text>
-          <View style={{ width: 24 }} />
+          <View style={{ width: scaleWidth(24) }} />
         </View>
 
         {/* Scan frame */}
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 14,
+    padding: scaleWidth(14),
     backgroundColor: "rgba(246, 246, 246, 1)",
   },
 
@@ -114,29 +115,29 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    marginTop: 20,
-    paddingHorizontal: 18,
-    height: 60,
+    paddingVertical: scaleHeight(12),
+    marginTop: scaleHeight(20),
+    paddingHorizontal: scaleWidth(18),
+    height: scaleHeight(60),
   },
   backButton: {
-    width: 30,
-    height: 80,
+    width: scaleWidth(30),
+    height: scaleHeight(80),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    marginTop: -10,
+    marginTop: scaleHeight(-10),
   },
   backArrow: {
-    fontSize: 42,
+    fontSize: scaleFont(42),
     color: "#1c1c1c",
     fontWeight: "700",
-    lineHeight: 42,
+    lineHeight: scaleFont(42),
   },
   headerTitle: {
     flex: 1,
     textAlign: "center",
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
   },
@@ -145,12 +146,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-    paddingHorizontal: 20,
-    paddingTop: 60,
+    paddingHorizontal: scaleWidth(20),
+    paddingTop: scaleHeight(60),
   },
   scanArea: {
-    width: 280,
-    height: 280,
+    width: scaleWidth(280),
+    height: scaleHeight(280),
     position: "relative",
     justifyContent: "center",
     alignItems: "center",
@@ -159,11 +160,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    width: 80,
-    height: 80,
+    width: scaleWidth(80),
+    height: scaleHeight(80),
     borderTopWidth: 4,
     borderLeftWidth: 4,
-    borderTopLeftRadius: 20,
+    borderTopLeftRadius: scaleSize(20),
     borderColor: "#101C2A",
     borderBottomWidth: 0,
     borderRightWidth: 0,
@@ -172,11 +173,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     right: 0,
-    width: 80,
-    height: 80,
+    width: scaleWidth(80),
+    height: scaleHeight(80),
     borderTopWidth: 4,
     borderRightWidth: 4,
-    borderTopRightRadius: 20,
+    borderTopRightRadius: scaleSize(20),
     borderColor: "#101C2A",
     borderBottomWidth: 0,
     borderLeftWidth: 0,
@@ -185,11 +186,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     left: 0,
-    width: 80,
-    height: 80,
+    width: scaleWidth(80),
+    height: scaleHeight(80),
     borderBottomWidth: 4,
     borderLeftWidth: 4,
-    borderBottomLeftRadius: 20,
+    borderBottomLeftRadius: scaleSize(20),
     borderColor: "#101C2A",
     borderTopWidth: 0,
     borderRightWidth: 0,
@@ -198,11 +199,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     right: 0,
-    width: 80,
-    height: 80,
+    width: scaleWidth(80),
+    height: scaleHeight(80),
     borderBottomWidth: 4,
     borderRightWidth: 4,
-    borderBottomRightRadius: 20,
+    borderBottomRightRadius: scaleSize(20),
     borderColor: "#101C2A",
     borderTopWidth: 0,
     borderLeftWidth: 0,
@@ -210,24 +211,24 @@ const styles = StyleSheet.create({
 
   scanBtn: {
     position: "absolute",
-    bottom: 70,
+    bottom: scaleHeight(70),
     left: SCAN_BUTTON_LEFT,
     width: SCAN_BUTTON_WIDTH,
-    height: 66,
+    height: scaleHeight(66),
     backgroundColor: "#101C2A",
-    borderRadius: 100,
+    borderRadius: scaleSize(100),
     alignItems: "center",
     justifyContent: "center",
   },
   scanText: {
     color: "#FFFFFF",
-    fontSize: 16,
+    fontSize: scaleFont(16),
     fontWeight: "600",
   },
 
   bottomNav: {
     width: "100%",
-    height: 65,
+    height: scaleHeight(65),
     backgroundColor: "#f6f6f6",
     flexDirection: "row",
     borderTopWidth: 1,
@@ -243,13 +244,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   tabLabel: {
-    fontSize: 11,
+    fontSize: scaleFont(11),
     color: "#949CA6",
   },
   tabIconImg: {
-    width: 25,
-    height: 25,
-    marginBottom: 3,
+    width: scaleSize(25),
+    height: scaleSize(25),
+    marginBottom: scaleHeight(3),
     resizeMode: "contain",
   },
 });

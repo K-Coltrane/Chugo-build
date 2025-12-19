@@ -12,6 +12,7 @@ import {
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import MenuModal, { RootStackParamList } from "../../components/MenuModal";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+import { scaleWidth, scaleHeight, scaleFont, scaleSize } from "../../utils/responsive";
 
 const FAQS = [
   {
@@ -68,7 +69,7 @@ const FAQScreen = () => {
             <Text style={styles.backArrow}>←</Text>
           </TouchableOpacity>
           <Text style={styles.pageTitle}>FAQ's</Text>
-          <View style={{ width: 24 }} />
+          <View style={{ width: scaleWidth(24) }} />
         </View>
 
         {/* FAQ list */}
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 14,
+    padding: scaleWidth(14),
     backgroundColor: "rgba(246, 246, 246, 1)",
   },
 
@@ -138,29 +139,29 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    marginTop: 20,
-    paddingHorizontal: 18,
-    height: 60,
+    paddingVertical: scaleHeight(12),
+    marginTop: scaleHeight(20),
+    paddingHorizontal: scaleWidth(18),
+    height: scaleHeight(60),
   },
   backButton: {
-    width: 30,
-    height: 80,
+    width: scaleWidth(30),
+    height: scaleHeight(80),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    marginTop: -10,
+    marginTop: scaleHeight(-10),
   },
   backArrow: {
-    fontSize: 42,
+    fontSize: scaleFont(42),
     color: "#1c1c1c",
     fontWeight: "700",
-    lineHeight: 42,
+    lineHeight: scaleFont(42),
   },
   pageTitle: {
     flex: 1,
     textAlign: "center",
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
   },
@@ -168,46 +169,46 @@ const styles = StyleSheet.create({
   // FAQ Card
   faqCard: {
     backgroundColor: "#fff",
-    borderRadius: 20,
-    marginHorizontal: 13,
-    marginTop: 13,
+    borderRadius: scaleSize(20),
+    marginHorizontal: scaleWidth(13),
+    marginTop: scaleHeight(13),
     shadowColor: "#000",
     shadowOpacity: 0.04,
-    shadowRadius: 3,
-    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: scaleSize(3),
+    shadowOffset: { width: 0, height: scaleHeight(1) },
   },
   faqRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 16,
-    paddingVertical: 15,
+    paddingHorizontal: scaleWidth(16),
+    paddingVertical: scaleHeight(15),
   },
   faqQuestion: {
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "400",
     color: "rgba(55, 73, 87, 1)",
   },
   arrowDown: {
-    fontSize: 18,
+    fontSize: scaleFont(18),
     color: "#999",
   },
   faqAnswerCard: {
     backgroundColor: "#fff",
-    borderRadius: 20,
-    marginHorizontal: 14,
-    marginBottom: 13,
-    padding: 13,
+    borderRadius: scaleSize(20),
+    marginHorizontal: scaleWidth(14),
+    marginBottom: scaleHeight(13),
+    padding: scaleWidth(13),
   },
   faqAnswer: {
-    fontSize: 16,
+    fontSize: scaleFont(16),
     color: "rgba(55, 73, 87, 0.68)",
   },
 
   // Bottom Navigation
   bottomNav: {
     width: "100%",
-    height: 65,
+    height: scaleHeight(65),
     backgroundColor: "#f6f6f6",
     flexDirection: "row",
     borderTopWidth: 1,
@@ -223,13 +224,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   tabLabel: {
-    fontSize: 11,
+    fontSize: scaleFont(11),
     color: "#949CA6",
   },
   tabIconImg: {
-    width: 25,
-    height: 25,
-    marginBottom: 3,
+    width: scaleSize(25),
+    height: scaleSize(25),
+    marginBottom: scaleHeight(3),
     resizeMode: "contain",
   },
 });

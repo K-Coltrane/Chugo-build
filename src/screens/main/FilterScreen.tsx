@@ -13,6 +13,7 @@ import { useNavigation, NavigationProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MenuModal from '../../components/MenuModal';
 import SwipeBackWrapper from '../../components/SwipeBackWrapper';
+import { scaleWidth, scaleHeight, scaleFont, scaleSize } from '../../utils/responsive';
 
 type RootStackParamList = {
   Home: undefined;
@@ -115,7 +116,7 @@ const FilterScreen = () => {
           >
             <Text style={styles.backArrow}>←</Text>
           </TouchableOpacity>
-          <View style={{ width: 24 }} />
+          <View style={{ width: scaleWidth(24) }} />
       </View>
 
       {/* Bottom sheet */}
@@ -128,7 +129,7 @@ const FilterScreen = () => {
                 source={require("../../../assets/images/Chickenman.jpg")}
                 style={styles.logo}
               />
-              <View style={{ flexShrink: 1, marginLeft: 10 }}>
+              <View style={{ flexShrink: 1, marginLeft: scaleWidth(10) }}>
                 <Text style={styles.restaurantName} numberOfLines={1}>
                   Chickenman pizzaman
                 </Text>
@@ -208,31 +209,31 @@ const styles = StyleSheet.create({
   // Header - positioned absolutely on top of map
   headerRow: {
     position: 'absolute',
-    top: 20,
+    top: scaleHeight(20),
     left: 0,
     right: 0,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    paddingHorizontal: 18,
-    height: 60,
+    paddingVertical: scaleHeight(12),
+    paddingHorizontal: scaleWidth(18),
+    height: scaleHeight(60),
     zIndex: 10,
     backgroundColor: 'transparent',
   },
   backButton: {
-    width: 30,
-    height: 80,
+    width: scaleWidth(30),
+    height: scaleHeight(80),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    marginTop: -10,
+    marginTop: scaleHeight(-10),
   },
   backArrow: {
-    fontSize: 42,
+    fontSize: scaleFont(42),
     color: "#1c1c1c",
     fontWeight: "700",
-    lineHeight: 42,
+    lineHeight: scaleFont(42),
   },
   
   // Bottom sheet header row (separate from top header)
@@ -255,7 +256,7 @@ const styles = StyleSheet.create({
   },
   mapText: {
     color: '#6b7280',
-    fontSize: 16,
+    fontSize: scaleFont(16),
     fontWeight: '600',
   },
 
@@ -263,18 +264,18 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: '5%',
     right: '5%',
-    bottom: 100,
-    borderTopLeftRadius: 32,
-    borderTopRightRadius: 32,
-    borderBottomLeftRadius: 32,
-    borderBottomRightRadius: 32,
+    bottom: scaleHeight(100),
+    borderTopLeftRadius: scaleSize(32),
+    borderTopRightRadius: scaleSize(32),
+    borderBottomLeftRadius: scaleSize(32),
+    borderBottomRightRadius: scaleSize(32),
     backgroundColor: '#081528',
     overflow: 'hidden',
     elevation: 15,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: -3 },
+    shadowOffset: { width: 0, height: scaleHeight(-3) },
     shadowOpacity: 0.15,
-    shadowRadius: 8,
+    shadowRadius: scaleSize(8),
     maxHeight: '50%',
     alignSelf: 'center',
     zIndex: 10,
@@ -282,10 +283,10 @@ const styles = StyleSheet.create({
 
   headerSection: {
     backgroundColor: '#081528',
-    paddingTop: 20,
-    paddingHorizontal: 16,
-    paddingBottom: 16,
-    height: 120,
+    paddingTop: scaleHeight(20),
+    paddingHorizontal: scaleWidth(16),
+    paddingBottom: scaleHeight(16),
+    height: scaleHeight(120),
     alignItems: 'center',
   },
 
@@ -295,15 +296,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   logo: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: scaleSize(50),
+    height: scaleSize(50),
+    borderRadius: scaleSize(25),
   },
   restaurantName: {
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: '700',
     color: '#ffffff',
-    marginBottom: 8,
+    marginBottom: scaleHeight(8),
   },
   ratingRow: {
     flexDirection: 'row',
@@ -313,151 +314,151 @@ const styles = StyleSheet.create({
     backgroundColor: '#10b981',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 6,
+    paddingHorizontal: scaleWidth(8),
+    paddingVertical: scaleHeight(4),
+    borderRadius: scaleSize(6),
   },
   ratingStar: {
     color: '#fff',
-    fontSize: 12,
-    marginRight: 2,
+    fontSize: scaleFont(12),
+    marginRight: scaleWidth(2),
   },
   ratingText: {
     color: '#fff',
-    fontSize: 12,
+    fontSize: scaleFont(12),
     fontWeight: '600',
   },
 
   headerRight: {
     alignItems: 'flex-end',
-    marginLeft: 12,
+    marginLeft: scaleWidth(12),
   },
   directionBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 12,
-    marginBottom: 8,
+    paddingHorizontal: scaleWidth(10),
+    paddingVertical: scaleHeight(6),
+    borderRadius: scaleSize(12),
+    marginBottom: scaleHeight(8),
   },
   directionText: {
     color: '#fff',
-    marginLeft: 4,
-    fontSize: 12,
+    marginLeft: scaleWidth(4),
+    fontSize: scaleFont(12),
   },
   closingText: {
-    fontSize: 12,
+    fontSize: scaleFont(12),
     color: '#fff',
   },
 
   bodySection: {
     backgroundColor: '#F7F8FA',
-    paddingTop: 20,
-    paddingHorizontal: 16,
-    paddingBottom: 16,
-    marginTop: -20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    paddingTop: scaleHeight(20),
+    paddingHorizontal: scaleWidth(16),
+    paddingBottom: scaleHeight(16),
+    marginTop: scaleHeight(-20),
+    borderTopLeftRadius: scaleSize(20),
+    borderTopRightRadius: scaleSize(20),
     alignItems: 'center',
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: scaleFont(18),
     fontWeight: '700',
     color: '#222B45',
     textAlign: 'center',
-    marginBottom: 16,
+    marginBottom: scaleHeight(16),
   },
 
   offersList: {
-    paddingVertical: 8,
+    paddingVertical: scaleHeight(8),
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: -20,
+    marginTop: scaleHeight(-20),
   },
 
   // --- EXACT OFFER CARD UI ---
   offerWrapper: {
-    width: 150,
+    width: scaleWidth(150),
     alignItems: "center",
     justifyContent: "center",
-    marginRight: 15,
+    marginRight: scaleWidth(15),
   },
   offerCard: {
-    width: 140,
+    width: scaleWidth(140),
     backgroundColor: "#ffffff",
-    borderRadius: 22,
-    padding: 10,
+    borderRadius: scaleSize(22),
+    padding: scaleWidth(10),
     alignItems: "center",
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: { width: 0, height: scaleHeight(4) },
     shadowOpacity: 0.12,
-    shadowRadius: 8,
+    shadowRadius: scaleSize(8),
     elevation: 6,
     position: "relative",
     
   },
   offerImage: {
     width: "100%",
-    height: 100,
-    borderRadius: 16,
+    height: scaleHeight(100),
+    borderRadius: scaleSize(16),
   },
   fireIcon: {
     position: "absolute",
-    top: 7,
-    right: 8,
-    fontSize: 15,
+    top: scaleHeight(7),
+    right: scaleWidth(8),
+    fontSize: scaleFont(15),
     color: "#F95F18",
   },
   offerTitle: {
-    fontSize: 15,
+    fontSize: scaleFont(15),
     fontWeight: "700",
     color: "#1A1D26",
-    marginTop: 12,
+    marginTop: scaleHeight(12),
   },
   offerLocation: {
-    fontSize: 12,
+    fontSize: scaleFont(12),
     color: "#A0A4AC",
-    marginTop: 3,
+    marginTop: scaleHeight(3),
   },
   offerPriceRow: {
     width: "100%",
-    marginTop: 10,
+    marginTop: scaleHeight(10),
     alignItems: "center",
   },
   offerPrice: {
-    fontSize: 17,
+    fontSize: scaleFont(17),
     fontWeight: "800",
     color: "#1A1D26",
   },
   offerOldPrice: {
-    fontSize: 12,
+    fontSize: scaleFont(12),
     color: "#A0A4AC",
     textDecorationLine: "line-through",
-    marginTop: 4,
+    marginTop: scaleHeight(4),
   },
 
   paginationDots: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 16,
-    gap: 8,
+    marginTop: scaleHeight(16),
+    gap: scaleWidth(8),
   },
   dot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
+    width: scaleSize(8),
+    height: scaleSize(8),
+    borderRadius: scaleSize(4),
     backgroundColor: '#D1D5DB',
   },
   dotActive: {
     backgroundColor: '#10b981',
-    width: 24,
+    width: scaleWidth(24),
   },
 
   bottomNav: {
     width: "100%",
-    height: 65,
+    height: scaleHeight(65),
     backgroundColor: "#f6f6f6",
     flexDirection: "row",
     borderTopWidth: 1,
@@ -477,13 +478,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   tabLabel: {
-    fontSize: 11,
+    fontSize: scaleFont(11),
     color: "#949CA6",
   },
   tabIconImg: {
-    width: 25,
-    height: 25,
-    marginBottom: 3,
+    width: scaleSize(25),
+    height: scaleSize(25),
+    marginBottom: scaleHeight(3),
     resizeMode: "contain",
   },
 });

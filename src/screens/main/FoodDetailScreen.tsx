@@ -14,6 +14,7 @@ import {
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import MenuModal from "../../components/MenuModal";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+import { scaleWidth, scaleHeight, scaleFont, scaleSize } from "../../utils/responsive";
 
 // Icon and image assets
 const checkIcon = require("../../../assets/icons/check.png");
@@ -139,9 +140,9 @@ const FoodDetailScreen = () => {
           <Text style={styles.backArrow}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Chugo</Text>
-        <View style={{ width: 24 }} />
+        <View style={{ width: scaleWidth(24) }} />
       </View>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 180 }}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: scaleHeight(180) }}>
         {/* --- IMAGE CARD + PROGRESS DOTS --- */}
         <View style={styles.imageCardWrapper}>
           <View style={styles.imageCard}>
@@ -171,7 +172,7 @@ const FoodDetailScreen = () => {
         {/* -- TEXT, PRICE & INGREDIENTS -- */}
         <View style={styles.sectionPadding}>
           <Text style={styles.endTimeText}>
-            <Text style={{fontSize: 15}}>🕒</Text> Ends: <Text style={{color: "#F66", fontWeight: "700"}}>12:00 PM</Text>
+            <Text style={{fontSize: scaleFont(15)}}>🕒</Text> Ends: <Text style={{color: "#F66", fontWeight: "700"}}>12:00 PM</Text>
           </Text>
           <Text style={styles.foodTitle}>Beef sauce and goat meat</Text>
           <View style={styles.priceRow}>
@@ -194,9 +195,9 @@ const FoodDetailScreen = () => {
         {/* -- SELLER CARD -- */}
         <View style={styles.sellerCard}>
           <Image source={shopIcon} style={styles.sellerLogo} />
-          <View style={{ flex: 1, marginLeft: 10 }}>
+          <View style={{ flex: 1, marginLeft: scaleWidth(10) }}>
             <Text style={styles.sellerName}>Chieckenman pizzaman</Text>
-            <View style={{ flexDirection: "row", alignItems: "center", marginTop: 4 }}>
+            <View style={{ flexDirection: "row", alignItems: "center", marginTop: scaleHeight(4) }}>
               <View style={styles.statusBadge}>
                 <Text style={styles.statusBadgeText}>4</Text>
               </View>
@@ -254,8 +255,8 @@ const FoodDetailScreen = () => {
             renderItem={({ item }) => (
               <View style={styles.commentItemRow}>
                   <Image source={item.avatar} style={styles.commentAvatar}/>
-                  <View style={{flex: 1, marginLeft: 9}}>
-                    <View style={{flexDirection: "row", alignItems: "center", marginBottom: 1}}>
+                  <View style={{flex: 1, marginLeft: scaleWidth(9)}}>
+                    <View style={{flexDirection: "row", alignItems: "center", marginBottom: scaleHeight(1)}}>
                       <Text style={styles.commentOrder}>{item.order} </Text>
                       <Text style={styles.commentUser}>{item.name}</Text>
                     </View>
@@ -311,29 +312,29 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    paddingHorizontal: 18,
-    height: 60,
+    paddingVertical: scaleHeight(12),
+    paddingHorizontal: scaleWidth(18),
+    height: scaleHeight(60),
     backgroundColor: "rgba(246, 246, 246, 1)",
-    marginTop: 20,  
+    marginTop: scaleHeight(20),  
   },
   backButton: {
-    width: 30,
-    height: 80,
+    width: scaleWidth(30),
+    height: scaleHeight(80),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    marginTop: -10,
+    marginTop: scaleHeight(-10),
   },
   backArrow: {
-    fontSize: 42,
+    fontSize: scaleFont(42),
     color: "#1c1c1c",
     fontWeight: "700",
-    lineHeight: 42,
+    lineHeight: scaleFont(42),
   },
   headerTitle: {
     flex: 1,
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
     textAlign: "center",
@@ -341,28 +342,28 @@ const styles = StyleSheet.create({
   imageCardWrapper: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 8,
-    marginBottom: 18,
+    marginTop: scaleHeight(8),
+    marginBottom: scaleHeight(18),
   },
   imageCard: {
-    width: 381,
-    height: 391,
+    width: scaleWidth(381),
+    height: scaleHeight(391),
     backgroundColor: "rgba(246, 246, 246, 1)",
-    borderRadius: 20,
+    borderRadius: scaleSize(20),
     alignItems: "center",
     justifyContent: "center",
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 8 },
+    shadowOffset: { width: 0, height: scaleHeight(8) },
     shadowOpacity: 0.07,
-    shadowRadius: 16,
+    shadowRadius: scaleSize(16),
     elevation: 7,
     position: "relative",
   },
   image: {
-    width: 278,
-    height: 270,
-    borderRadius: 135,
-    marginTop: 14,
+    width: scaleWidth(278),
+    height: scaleHeight(270),
+    borderRadius: scaleSize(135),
+    marginTop: scaleHeight(14),
   },
   quantityControl: {
     flexDirection: "column",
@@ -370,121 +371,121 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "rgba(246, 246, 246, 1)",
     position: "absolute",
-    bottom: 10,
+    bottom: scaleHeight(10),
     alignSelf: "center",
-    borderRadius: 10,
-    width: 47,
-    height: 114,
+    borderRadius: scaleSize(10),
+    width: scaleWidth(47),
+    height: scaleHeight(114),
     shadowColor: "#000",
     shadowOpacity: 0.10,
-    shadowRadius: 16,
-    shadowOffset: { width: 0, height: 7 },
+    shadowRadius: scaleSize(16),
+    shadowOffset: { width: 0, height: scaleHeight(7) },
     elevation: 5,
   },
   plusMinus: {
-    fontSize: 21,
+    fontSize: scaleFont(21),
     fontWeight: "500",
     color: "rgba(20, 32, 50, 1)",
-    marginVertical: 1,
+    marginVertical: scaleHeight(1),
     alignSelf: "center",
-    top: 3
+    top: scaleHeight(3)
   },
   quantityDisplay: {
-    marginVertical: 7,
-    paddingVertical: 6,
-    paddingHorizontal: 18,
-    borderRadius: 8,
+    marginVertical: scaleHeight(7),
+    paddingVertical: scaleHeight(6),
+    paddingHorizontal: scaleWidth(18),
+    borderRadius: scaleSize(8),
     backgroundColor: "rgba(20, 32, 50, 1)",
     alignItems: "center",
     
-    height: 35,
+    height: scaleHeight(35),
   },
   quantityText: {
     color: "rgba(255, 255, 255, 1)",
     fontWeight: "700",
-    fontSize: 10,
+    fontSize: scaleFont(10),
     textAlign: "center",
-    top: 4,
+    top: scaleHeight(4),
   },
   progressWrapper: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 43,
-    marginBottom: 10,
+    marginTop: scaleHeight(43),
+    marginBottom: scaleHeight(10),
   },
   activeDot: {
-    width: 44,
-    height: 7,
-    borderRadius: 3.5,
+    width: scaleWidth(44),
+    height: scaleHeight(7),
+    borderRadius: scaleSize(3.5),
     backgroundColor: "#ABDC3D",
-    marginHorizontal: 3,
+    marginHorizontal: scaleWidth(3),
   },
   inactiveDot: {
-    width: 14,
-    height: 7,
-    borderRadius: 3.5,
+    width: scaleWidth(14),
+    height: scaleHeight(7),
+    borderRadius: scaleSize(3.5),
     backgroundColor: "#E4E4E4",
-    marginHorizontal: 3,
+    marginHorizontal: scaleWidth(3),
   },
   sectionPadding: {
-    paddingHorizontal: 18,
-    marginBottom: 8,
+    paddingHorizontal: scaleWidth(18),
+    marginBottom: scaleHeight(8),
   },
   endTimeText: {
-    fontSize: 15,
-    marginBottom: 2,
+    fontSize: scaleFont(15),
+    marginBottom: scaleHeight(2),
     color: "#444",
     fontWeight: "500",
   },
   foodTitle: {
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "500",
     color: "#rgba(20, 32, 50, 1)",
-    marginTop: 3,
-    marginBottom: 3,
+    marginTop: scaleHeight(3),
+    marginBottom: scaleHeight(3),
   },
   priceRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: 2,
+    marginVertical: scaleHeight(2),
   },
   price: {
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "600",
     color: "rgba(20, 32, 50, 1)",
-    marginRight: 8,
+    marginRight: scaleWidth(8),
   },
   oldPrice: {
-    fontSize: 20,
+    fontSize: scaleFont(20),
     color: "#rgba(20, 32, 50, 1)",
     textDecorationLine: "line-through",
     fontWeight: "500",
   },
   description: {
-    marginTop: 3,
-    marginBottom: 6,
+    marginTop: scaleHeight(3),
+    marginBottom: scaleHeight(6),
     color: "rgba(20, 32, 50, 1)",
-    fontSize: 16,
-    lineHeight: 22,
+    fontSize: scaleFont(16),
+    lineHeight: scaleFont(22),
   },
   ingredientList: {
-    marginBottom: 11,
-    marginLeft: 2,
+    marginBottom: scaleHeight(11),
+    marginLeft: scaleWidth(2),
   },
   ingredientItem: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: 1.5,
+    marginVertical: scaleHeight(1.5),
   },
   ingredientCheckIcon: {
-    width: 18,
-    height: 18,
-    marginRight: 10,
+    width: scaleSize(18),
+    height: scaleSize(18),
+    marginRight: scaleWidth(10),
     tintColor: "#008069",
   },
   ingredientText: {
-    fontSize: 16,
+    fontSize: scaleFont(16),
     color: "#18181A",
     fontWeight: "400",
   },
@@ -493,75 +494,75 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "rgba(255, 255, 255, 1)",
-    borderRadius: 22,
+    borderRadius: scaleSize(22),
     shadowColor: "#000",
     shadowOpacity: 0.05,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: scaleSize(12),
+    shadowOffset: { width: 0, height: scaleHeight(2) },
     elevation: 2,
-    marginTop: 18,
-    marginHorizontal: 14,
-    padding: 14,
-    marginBottom: 10,
-    height: 107,
+    marginTop: scaleHeight(18),
+    marginHorizontal: scaleWidth(14),
+    padding: scaleWidth(14),
+    marginBottom: scaleHeight(10),
+    height: scaleHeight(107),
   },
   sellerLogo: {
-    width: 69,
-    height: 69,
-    borderRadius: 17,
+    width: scaleSize(69),
+    height: scaleSize(69),
+    borderRadius: scaleSize(17),
     backgroundColor: "#fff",
     borderWidth: 1,
     borderColor: "rgba(184, 254, 34, 1)",
   },
   sellerName: {
     fontWeight: "500",
-    fontSize: 20,
+    fontSize: scaleFont(20),
     color: "rgba(20, 32, 50, 1)",
-    marginBottom: 1,
+    marginBottom: scaleHeight(1),
   },
   statusBadge: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#eaffd9",
-    borderRadius: 13,
-    paddingHorizontal: 9,
-    paddingVertical: 2.5,
-    marginRight: 7,
+    borderRadius: scaleSize(13),
+    paddingHorizontal: scaleWidth(9),
+    paddingVertical: scaleHeight(2.5),
+    marginRight: scaleWidth(7),
   },
   statusBadgeText: {
     fontWeight: "700",
     color: "#62d754",
-    fontSize: 13,
-    marginRight: 2,
+    fontSize: scaleFont(13),
+    marginRight: scaleWidth(2),
   },
   directionsBadge: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#ededed",
-    borderRadius: 11,
-    paddingHorizontal: 10,
-    paddingVertical: 2,
-    marginLeft: 1,
+    borderRadius: scaleSize(11),
+    paddingHorizontal: scaleWidth(10),
+    paddingVertical: scaleHeight(2),
+    marginLeft: scaleWidth(1),
   },
   directionsText: {
     fontWeight: "500",
     color: "#646870",
-    fontSize: 13,
+    fontSize: scaleFont(13),
   },
   sellerCallBtn: {
     borderColor: "rgba(0, 0, 0, 0.15)",
     borderWidth: 1,
-    borderRadius: 24,
-    padding: 8,
-    marginLeft: 13,
-    width: 48,
-    height: 48,
+    borderRadius: scaleSize(24),
+    padding: scaleWidth(8),
+    marginLeft: scaleWidth(13),
+    width: scaleSize(48),
+    height: scaleSize(48),
   },
   callBtnIcon: {
-    width: 23,
-    height: 23,
-    left: 2,
-    top: 2
+    width: scaleSize(23),
+    height: scaleSize(23),
+    left: scaleWidth(2),
+    top: scaleHeight(2)
    
   },
   // -------- Rating bubbles -----------
@@ -570,27 +571,27 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "rgba(246, 246, 246, 1)",
-    marginTop: 18,
-    borderRadius: 19,
-    marginHorizontal: 12,
-    paddingHorizontal: 6,
-    paddingVertical: 6,
-    marginBottom: 7,
+    marginTop: scaleHeight(18),
+    borderRadius: scaleSize(19),
+    marginHorizontal: scaleWidth(12),
+    paddingHorizontal: scaleWidth(6),
+    paddingVertical: scaleHeight(6),
+    marginBottom: scaleHeight(7),
   },
   ratingBubble: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 3,
+    marginHorizontal: scaleWidth(3),
     backgroundColor: "rgba(255, 255, 255, 1)",
-    borderRadius: 16,
-    paddingVertical: 4,
+    borderRadius: scaleSize(16),
+    paddingVertical: scaleHeight(4),
     paddingHorizontal: 0,
     borderWidth: 1,
     borderColor: "transparent",
     flexDirection: "row",
-    minWidth: 45,
-    maxWidth: 70,
+    minWidth: scaleWidth(45),
+    maxWidth: scaleWidth(70),
     alignSelf: "stretch",
   },
   ratingBubbleActive: {
@@ -598,29 +599,29 @@ const styles = StyleSheet.create({
     
   },
   ratingBubbleCircle: {
-    width: 21,
-    height: 21,
-    borderRadius: 10.5,
-    borderWidth: 2.5,
+    width: scaleSize(21),
+    height: scaleSize(21),
+    borderRadius: scaleSize(10.5),
+    borderWidth: scaleSize(2.5),
     borderColor: "#aaa",
     backgroundColor: "#fff",
-    marginRight: 4,
+    marginRight: scaleWidth(4),
   },
   ratingBubbleCircleActive: {
     borderColor: "#f7b538",
     backgroundColor: "#fff",
   },
   ratingBubbleStar: {
-    fontSize: 18,
+    fontSize: scaleFont(18),
     color: "#bcbcbc",
     fontWeight: "700",
-    marginRight: 4,
+    marginRight: scaleWidth(4),
   },
   ratingBubbleStarActive: {
     color: "#F7B538",
   },
   ratingBubbleLabel: {
-    fontSize: 17,
+    fontSize: scaleFont(17),
     color: "#19191a",
     fontWeight: "500",
     marginTop: 0,
@@ -630,60 +631,60 @@ const styles = StyleSheet.create({
     fontWeight: "800",
   },
   commentsWrapper: {
-    marginTop: 5,
-    paddingHorizontal: 8,
-    marginBottom: 70,
+    marginTop: scaleHeight(5),
+    paddingHorizontal: scaleWidth(8),
+    marginBottom: scaleHeight(70),
   },
   commentItemRow: {
     flexDirection: "row",
     alignItems: "flex-start",
-    paddingVertical: 10,
+    paddingVertical: scaleHeight(10),
     borderBottomWidth: 1,
     borderColor: "#e2e2e7",
   },
   commentAvatar: {
-    width: 35,
-    height: 36,
-    borderRadius: 10,
-    marginRight: 8,
+    width: scaleSize(35),
+    height: scaleSize(36),
+    borderRadius: scaleSize(10),
+    marginRight: scaleWidth(8),
     
   },
   commentOrder: {
-    fontSize: 9,
+    fontSize: scaleFont(9),
     color: "rgba(55, 73, 87, 0.75)",
-    marginRight: 2,
+    marginRight: scaleWidth(2),
     fontWeight: "500",
   },
   commentUser: {
     fontWeight: "500",
-    fontSize: 11,
+    fontSize: scaleFont(11),
     color: "rgba(55, 73, 87, 1)",
-    marginRight: 5,
+    marginRight: scaleWidth(5),
   },
   commentStars: {
-    fontSize: 15,
+    fontSize: scaleFont(15),
     color: "rgba(55, 73, 87, 1)",
     letterSpacing: 1.5,
     fontWeight: "600",
     marginBottom: 0,
   },
   commentText: {
-    fontSize: 12,
+    fontSize: scaleFont(12),
     color: "#rgba(55, 73, 87, 1)",
-    marginTop: 1,
-    lineHeight: 21,
+    marginTop: scaleHeight(1),
+    lineHeight: scaleFont(21),
     fontWeight: "400"
   },
   commentTextLink: {
-    fontSize: 15,
+    fontSize: scaleFont(15),
     color: "#1976d2",
-    marginTop: 1,
+    marginTop: scaleHeight(1),
     textDecorationLine: "underline",
-    lineHeight: 21,
+    lineHeight: scaleFont(21),
   },
   bottomNav: {
     width: "100%",
-    height: 65,
+    height: scaleHeight(65),
     backgroundColor: "#fff",
     flexDirection: "row",
     borderTopWidth: 1,
@@ -702,13 +703,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   tabLabel: {
-    fontSize: 11,
+    fontSize: scaleFont(11),
     color: "#949CA6",
   },
   tabIconImg: {
-    width: 25,
-    height: 25,
-    marginBottom: 3,
+    width: scaleSize(25),
+    height: scaleSize(25),
+    marginBottom: scaleHeight(3),
     resizeMode: "contain",
   },
 });

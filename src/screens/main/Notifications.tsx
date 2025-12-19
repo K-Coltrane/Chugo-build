@@ -12,6 +12,7 @@ import { useNavigation, NavigationProp } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import MenuModal from "../../components/MenuModal"; // Keep if you use it
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+import { scaleWidth, scaleHeight, scaleFont, scaleSize } from "../../utils/responsive";
 
 // ---- Navigation Typings ----
 type RootStackParamList = {
@@ -95,7 +96,7 @@ const Notifications = () => {
             <Text style={styles.backArrow}>←</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Notifications</Text>
-          <View style={{ width: 44 }} />
+          <View style={{ width: scaleWidth(44) }} />
         </View>
 
         {/* Notification Card */}
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    padding: 14,
+    padding: scaleWidth(14),
     backgroundColor: "rgba(246, 246, 246, 1)",
   },
 
@@ -149,29 +150,29 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    paddingHorizontal: 18,
-    height: 60,
-    marginTop: 20,  
+    paddingVertical: scaleHeight(12),
+    paddingHorizontal: scaleWidth(18),
+    height: scaleHeight(60),
+    marginTop: scaleHeight(20),  
   },
   backButton: {
-    width: 30,
-    height: 80,
+    width: scaleWidth(30),
+    height: scaleHeight(80),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    marginTop: -10,
+    marginTop: scaleHeight(-10),
   },
   backArrow: {
-    fontSize: 42,
+    fontSize: scaleFont(42),
     color: "#1c1c1c",
     fontWeight: "700",
-    lineHeight: 42,
+    lineHeight: scaleFont(42),
   },
   headerTitle: {
     flex: 1,
     textAlign: "center",
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
   },
@@ -181,14 +182,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "rgba(255, 255, 255, 1)",
-    borderRadius: 20,
-    padding: 10,  
-    marginVertical: 12,
+    borderRadius: scaleSize(20),
+    padding: scaleWidth(10),  
+    marginVertical: scaleHeight(12),
     position: "relative",
   },
   notificationMsg: {
     flex: 1,
-    fontSize: 15,
+    fontSize: scaleFont(15),
     color: "rgba(55, 73, 87, 1)",
     fontWeight: "400",
     fontFamily: "Inter"
@@ -197,27 +198,27 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   notifyClose: {
-    marginLeft: 12,
+    marginLeft: scaleWidth(12),
 
   },
   closeIcon: {
-    fontSize: 16,
+    fontSize: scaleFont(16),
     color: "rgba(255, 255, 255, 1)",
     fontWeight: "700",
     backgroundColor: "rgba(8, 21, 40, 1)",
-    borderRadius:30,
-    width:20,
-    height:20,
-    top: -30,
+    borderRadius: scaleSize(30),
+    width: scaleSize(20),
+    height: scaleSize(20),
+    top: scaleHeight(-30),
     textAlign: "center",
-    lineHeight: 20,
-    left: 10,
+    lineHeight: scaleFont(20),
+    left: scaleWidth(10),
   },
 
   // Bottom Navigation
   bottomNav: {
     width: "100%",
-    height: 65,
+    height: scaleHeight(65),
     backgroundColor: "#f6f6f6",
     flexDirection: "row",
     borderTopWidth: 1,
@@ -233,13 +234,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   tabLabel: {
-    fontSize: 11,
+    fontSize: scaleFont(11),
     color: "#949CA6",
   },
   tabIconImg: {
-    width: 25,
-    height: 25,
-    marginBottom: 3,
+    width: scaleSize(25),
+    height: scaleSize(25),
+    marginBottom: scaleHeight(3),
     resizeMode: "contain",
   },
 });

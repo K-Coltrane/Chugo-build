@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, SafeAreaView, Image, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+import { scaleWidth, scaleHeight, scaleFont, scaleSize } from "../../utils/responsive";
 
 const ReviewScreen = ({ navigation: navProp }: any) => {
   const navigation = useNavigation();
@@ -27,7 +28,7 @@ const ReviewScreen = ({ navigation: navProp }: any) => {
             >
               <Text style={styles.backArrow}>←</Text>
             </TouchableOpacity>
-            <View style={{ width: 24 }} />
+            <View style={{ width: scaleWidth(24) }} />
           </View>
       <Text style={styles.orderTitle}>How’s your order?</Text>
       <Text style={styles.ratingLabel}>You’r overall rating</Text>
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 14,
+    padding: scaleWidth(14),
     backgroundColor: "#F6F7FA",
   },
 
@@ -84,48 +85,48 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    marginTop: 20,
-    paddingHorizontal: 18,
-    height: 60,
+    paddingVertical: scaleHeight(12),
+    marginTop: scaleHeight(20),
+    paddingHorizontal: scaleWidth(18),
+    height: scaleHeight(60),
   },
   backButton: {
-    width: 30,
-    height: 80,
+    width: scaleWidth(30),
+    height: scaleHeight(80),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    marginTop: -10,
+    marginTop: scaleHeight(-10),
   },
   backArrow: {
-    fontSize: 42,
+    fontSize: scaleFont(42),
     color: "#1c1c1c",
     fontWeight: "700",
-    lineHeight: 42,
+    lineHeight: scaleFont(42),
   },
   orderTitle: {
-    fontSize: 19,
+    fontSize: scaleFont(19),
     fontWeight: "500",
     color: "#222B45",
-    marginTop: 12,
-    marginBottom: 18,
+    marginTop: scaleHeight(12),
+    marginBottom: scaleHeight(18),
   },
 
   // Rating section
   ratingLabel: {
-    fontSize: 13,
+    fontSize: scaleFont(13),
     color: "#B4B6BC",
-    marginBottom: 7,
-    marginLeft: 3,
+    marginBottom: scaleHeight(7),
+    marginLeft: scaleWidth(3),
   },
   starsRow: {
     flexDirection: "row",
-    marginBottom: 18,
+    marginBottom: scaleHeight(18),
     justifyContent: "center",
   },
   star: {
-    fontSize: 32,
-    marginRight: 8,
+    fontSize: scaleFont(32),
+    marginRight: scaleWidth(8),
   },
   starFull: {
     color: "#222B45",
@@ -136,19 +137,19 @@ const styles = StyleSheet.create({
 
   // Review section
   reviewLabel: {
-    fontSize: 15,
+    fontSize: scaleFont(15),
     fontWeight: "500",
     color: "#222B45",
-    marginBottom: 5,
-    marginLeft: 2,
+    marginBottom: scaleHeight(5),
+    marginLeft: scaleWidth(2),
   },
   reviewInput: {
     backgroundColor: "#fff",
-    borderRadius: 15,
-    fontSize: 15,
-    minHeight: 65,
-    padding: 11,
-    marginBottom: 10,
+    borderRadius: scaleSize(15),
+    fontSize: scaleFont(15),
+    minHeight: scaleHeight(65),
+    padding: scaleWidth(11),
+    marginBottom: scaleHeight(10),
     color: "#222B45",
   },
 
@@ -156,29 +157,29 @@ const styles = StyleSheet.create({
   addPhotoRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 18,
+    marginBottom: scaleHeight(18),
   },
   photoIcon: {
-    fontSize: 19,
+    fontSize: scaleFont(19),
     color: "#B3B8C4",
-    marginRight: 7,
+    marginRight: scaleWidth(7),
   },
   addPhotoText: {
-    fontSize: 15,
+    fontSize: scaleFont(15),
     color: "#686C73",
   },
 
   // Submit button
   submitBtn: {
     backgroundColor: "#101C2A",
-    paddingVertical: 15,
-    borderRadius: 20,
+    paddingVertical: scaleHeight(15),
+    borderRadius: scaleSize(20),
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: scaleHeight(10),
   },
   submitText: {
     color: "#fff",
-    fontSize: 17,
+    fontSize: scaleFont(17),
     fontWeight: "600",
     letterSpacing: 1,
   },
@@ -189,7 +190,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: "100%",
-    height: 65,
+    height: scaleHeight(65),
     backgroundColor: "#fff",
     flexDirection: "row",
     borderTopWidth: 1,
@@ -203,12 +204,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   tabIcon: {
-    fontSize: 22,
+    fontSize: scaleFont(22),
     color: "#949CA6",
-    marginBottom: 1,
+    marginBottom: scaleHeight(1),
   },
   tabLabel: {
-    fontSize: 11,
+    fontSize: scaleFont(11),
     color: "#949CA6",
   },
 });

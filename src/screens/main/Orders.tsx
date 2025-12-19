@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, SafeAreaView
 import { useNavigation } from "@react-navigation/native";
 import MenuModal from '../../components/MenuModal';
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+import { scaleWidth, scaleHeight, scaleFont, scaleSize } from "../../utils/responsive";
 
 const orders = [
   {
@@ -55,7 +56,7 @@ const Orders = () => {
           <Text style={styles.backArrow}>←</Text>
         </TouchableOpacity>
           <Text style={styles.headerTitle}>Chugo orders</Text>
-          <View style={{ width: 24 }} />
+          <View style={{ width: scaleWidth(24) }} />
         </View>
         <Text style={styles.sectionTitle}>My</Text>
         <Text style={styles.sectionSubtitle}>Chugo orders</Text>
@@ -75,7 +76,7 @@ const Orders = () => {
             </TouchableOpacity>
           )}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 100 }}
+          contentContainerStyle={{ paddingBottom: scaleHeight(100) }}
         />
       </View>
 
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 14,
+    padding: scaleWidth(14),
     backgroundColor: "rgba(246, 246, 246, 1)",
   },
 
@@ -122,87 +123,87 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    paddingHorizontal: 18,
-    height: 60,
-    marginTop: 20,  
+    paddingVertical: scaleHeight(12),
+    paddingHorizontal: scaleWidth(18),
+    height: scaleHeight(60),
+    marginTop: scaleHeight(20),  
   },
   backButton: {
-    width: 30,
-    height: 80,
+    width: scaleWidth(30),
+    height: scaleHeight(80),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    marginTop: -10,
+    marginTop: scaleHeight(-10),
   },
   backArrow: {
-    fontSize: 42,
+    fontSize: scaleFont(42),
     color: "#1c1c1c",
     fontWeight: "700",
-    lineHeight: 42,
+    lineHeight: scaleFont(42),
   },
   headerTitle: {
     flex: 1,
     textAlign: "center",
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
   },
   sectionTitle: {
-    fontSize: 32,
+    fontSize: scaleFont(32),
     fontWeight: "500",
     color: "rgba(20, 32, 50, 1)",
     marginTop: 0,
-    marginBottom: 2,
+    marginBottom: scaleHeight(2),
   },
   sectionSubtitle: {
-    fontSize: 32,
+    fontSize: scaleFont(32),
     fontWeight: "200",
     color: "rgba(20, 32, 50, 1)",
-    marginBottom: 10,
+    marginBottom: scaleHeight(10),
   },
   orderCard: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
-    borderRadius: 15,
-    paddingVertical: 8,
-    paddingHorizontal: 8,
-    marginBottom: 14,
+    borderRadius: scaleSize(15),
+    paddingVertical: scaleHeight(8),
+    paddingHorizontal: scaleWidth(8),
+    marginBottom: scaleHeight(14),
     shadowColor: "#000",
     shadowOpacity: 0.04,
-    shadowRadius: 4,
+    shadowRadius: scaleSize(4),
     elevation: 1,
-    height: 107,
+    height: scaleHeight(107),
   },
   orderImage: {
-    width: 84,
-    height: 80,
-    borderRadius: 10,
-    marginRight: 12,
+    width: scaleWidth(84),
+    height: scaleHeight(80),
+    borderRadius: scaleSize(10),
+    marginRight: scaleWidth(12),
   },
   orderDetails: { flex: 1 },
   orderName: {
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "500",
     color: "rgba(20, 32, 50, 1)",
-    marginBottom: 3,
+    marginBottom: scaleHeight(3),
     fontFamily: "Inter"
   },
   orderPrice: {
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "500",
     color: "rgba(20, 32, 50, 1)",
   },
   orderNo: {
-    fontSize: 16,
+    fontSize: scaleFont(16),
     fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
-    marginLeft: 6,
+    marginLeft: scaleWidth(6),
   },
   bottomNav: {
     width: "100%",
-    height: 65,
+    height: scaleHeight(65),
     backgroundColor: "#f6f6f6",
     flexDirection: "row",
     borderTopWidth: 1,
@@ -218,13 +219,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   tabLabel: {
-    fontSize: 11,
+    fontSize: scaleFont(11),
     color: "#949CA6",
   },
   tabIconImg: {
-    width: 25,
-    height: 25,
-    marginBottom: 3,
+    width: scaleSize(25),
+    height: scaleSize(25),
+    marginBottom: scaleHeight(3),
     resizeMode: "contain",
   },
 });

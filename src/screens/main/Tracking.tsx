@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+import { scaleWidth, scaleHeight, scaleFont, scaleSize } from "../../utils/responsive";
 
 type RootStackParamList = {
   VerifyScreen: undefined;
@@ -43,7 +44,7 @@ const TrackingScreen = () => {
           <Text style={styles.backArrow}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Tracking</Text>
-        <View style={{ width: 24 }} />
+        <View style={{ width: scaleWidth(24) }} />
       </View>
 
       {/* Track Card */}
@@ -80,12 +81,12 @@ const TrackingScreen = () => {
       </View>
 
       {/* Progress */}
-      <View style={[styles.progressRow, { marginTop: 24 }]}>
+      <View style={[styles.progressRow, { marginTop: scaleHeight(24) }]}>
         <Text style={styles.progressItem}>Order waiting</Text>
         <Text style={styles.progressTime}>12:00PM</Text>
       </View>
 
-      <View style={[styles.progressRow, { marginTop: 24 }]}>
+      <View style={[styles.progressRow, { marginTop: scaleHeight(24) }]}>
         <Text style={styles.progressItem}>Verify your secret code</Text>
         <View style={styles.secretCodeRow}>
           {["#", "#", "#", "#"].map((x, i) => (
@@ -96,7 +97,7 @@ const TrackingScreen = () => {
         </View>
       </View>
 
-      <View style={[styles.progressRow, { marginTop: 24 }]}>
+      <View style={[styles.progressRow, { marginTop: scaleHeight(24) }]}>
         <Text style={styles.progressItem}>Thank You</Text>
       </View>
 
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 14,
+    padding: scaleWidth(14),
     backgroundColor: "rgba(246, 246, 246, 1)",
   },
 
@@ -138,98 +139,98 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    marginTop: 20,
-    paddingHorizontal: 18,
-    height: 60,
+    paddingVertical: scaleHeight(12),
+    marginTop: scaleHeight(20),
+    paddingHorizontal: scaleWidth(18),
+    height: scaleHeight(60),
   },
   backButton: {
-    width: 30,
-    height: 80,
+    width: scaleWidth(30),
+    height: scaleHeight(80),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    marginTop: -10,
+    marginTop: scaleHeight(-10),
   },
   backArrow: {
-    fontSize: 42,
+    fontSize: scaleFont(42),
     color: "#1c1c1c",
     fontWeight: "700",
-    lineHeight: 42,
+    lineHeight: scaleFont(42),
   },
   headerTitle: {
     flex: 1,
     textAlign: "center",
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
   },
 
   trackCard: {
     backgroundColor: "#fff",
-    borderRadius: 16,
-    padding: 11,
-    marginBottom: 8,
+    borderRadius: scaleSize(16),
+    padding: scaleWidth(11),
+    marginBottom: scaleHeight(8),
   },
   trackRow: {
     flexDirection: "row",
     alignItems: "center",
   },
   mealImage: {
-    width: 48,
-    height: 48,
-    borderRadius: 10,
+    width: scaleSize(48),
+    height: scaleSize(48),
+    borderRadius: scaleSize(10),
     backgroundColor: "#ECECEC",
-    marginRight: 8,
+    marginRight: scaleWidth(8),
   },
   mealName: {
-    fontSize: 15,
+    fontSize: scaleFont(15),
     fontWeight: "500",
     color: "#222B45",
   },
   trackDetails: {
-    marginTop: 8,
+    marginTop: scaleHeight(8),
     fontWeight: "500",
-    fontSize: 13,
+    fontSize: scaleFont(13),
     color: "#959CA6",
   },
   trackDesc: {
-    fontSize: 13,
+    fontSize: scaleFont(13),
     color: "#222B45",
-    marginBottom: 4,
+    marginBottom: scaleHeight(4),
   },
   trackTotalTitle: {
-    marginTop: 4,
+    marginTop: scaleHeight(4),
     fontWeight: "500",
-    fontSize: 13,
+    fontSize: scaleFont(13),
     color: "#959CA6",
   },
   trackTotal: {
-    fontSize: 15,
+    fontSize: scaleFont(15),
     fontWeight: "700",
     color: "#222B45",
-    marginBottom: 12,
+    marginBottom: scaleHeight(12),
   },
 
   sellerRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 7,
+    marginBottom: scaleHeight(7),
   },
   vendorLogo: {
-    width: 28,
-    height: 28,
-    borderRadius: 12,
-    marginRight: 7,
+    width: scaleSize(28),
+    height: scaleSize(28),
+    borderRadius: scaleSize(12),
+    marginRight: scaleWidth(7),
   },
   vendorName: {
-    fontSize: 14,
+    fontSize: scaleFont(14),
     fontWeight: "500",
     color: "#222B45",
-    marginRight: 5,
+    marginRight: scaleWidth(5),
   },
   vendorStatus: {
-    fontSize: 12,
+    fontSize: scaleFont(12),
     fontWeight: "500",
     color: "#6FCF97",
   },
@@ -237,23 +238,23 @@ const styles = StyleSheet.create({
   callRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 7,
-    marginBottom: 3,
+    marginTop: scaleHeight(7),
+    marginBottom: scaleHeight(3),
   },
   callBtn: {
     backgroundColor: "#F3F7FA",
-    paddingVertical: 5,
-    paddingHorizontal: 19,
-    borderRadius: 12,
-    marginRight: 12,
+    paddingVertical: scaleHeight(5),
+    paddingHorizontal: scaleWidth(19),
+    borderRadius: scaleSize(12),
+    marginRight: scaleWidth(12),
   },
   callText: {
-    fontSize: 15,
+    fontSize: scaleFont(15),
     color: "#222B45",
     fontWeight: "500",
   },
   timeText: {
-    fontSize: 15,
+    fontSize: scaleFont(15),
     color: "#222B45",
   },
 
@@ -264,53 +265,53 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   progressItem: {
-    fontSize: 13,
+    fontSize: scaleFont(13),
     color: "#222B45",
     fontWeight: "400",
   },
   progressTime: {
-    fontSize: 13,
+    fontSize: scaleFont(13),
     color: "#959CA6",
   },
 
   secretCodeRow: {
     flexDirection: "row",
-    marginLeft: 10,
+    marginLeft: scaleWidth(10),
   },
   codeBox: {
     backgroundColor: "#F7F8FA",
-    borderRadius: 6,
-    paddingHorizontal: 12,
-    paddingVertical: 3,
-    marginHorizontal: 2,
-    fontSize: 21,
+    borderRadius: scaleSize(6),
+    paddingHorizontal: scaleWidth(12),
+    paddingVertical: scaleHeight(3),
+    marginHorizontal: scaleWidth(2),
+    fontSize: scaleFont(21),
     color: "#222B45",
   },
 
   verifyBtn: {
     backgroundColor: "#222B45",
-    paddingVertical: 13,
-    borderRadius: 14,
+    paddingVertical: scaleHeight(13),
+    borderRadius: scaleSize(14),
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: scaleHeight(20),
+    marginBottom: scaleHeight(20),
   },
   verifyText: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: scaleFont(16),
     fontWeight: "600",
   },
 
   bottomNav: {
-    height: 65,
+    height: scaleHeight(65),
     backgroundColor: "#fff",
     flexDirection: "row",
     borderTopWidth: 1,
     borderColor: "#E2E3E4",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 4,
+    paddingHorizontal: scaleWidth(4),
   },
   tabItem: {
     flex: 1,
@@ -318,12 +319,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   tabIcon: {
-    fontSize: 22,
+    fontSize: scaleFont(22),
     color: "#949CA6",
-    marginBottom: 1,
+    marginBottom: scaleHeight(1),
   },
   tabLabel: {
-    fontSize: 11,
+    fontSize: scaleFont(11),
     color: "#949CA6",
   },
 });

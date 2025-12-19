@@ -12,6 +12,7 @@ import {
 import MenuModal from "../../components/MenuModal"; 
 import { useNavigation } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+import { scaleWidth, scaleHeight, scaleFont, scaleSize } from "../../utils/responsive";
 
 // Bottom tab data
 const TAB_ICONS = [
@@ -58,11 +59,11 @@ const PrivacyPolicyScreen: React.FC = () => {
           <Text style={styles.backArrow}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Privacy Policy</Text>
-        <View style={{ width: 24 }} />
+        <View style={{ width: scaleWidth(24) }} />
       </View>
 
       {/* Content */}
-      <ScrollView contentContainerStyle={{ padding: 16, flexGrow: 1 }}>
+      <ScrollView contentContainerStyle={{ padding: scaleWidth(16), flexGrow: 1 }}>
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Privacy Policy</Text>
           <Text style={styles.cardText}>
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 14,
+    padding: scaleWidth(14),
     backgroundColor: "rgba(246, 246, 246, 1)",
   },
 
@@ -117,28 +118,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    paddingHorizontal: 18,
-    height: 60,
-    marginTop: 20,  
+    paddingVertical: scaleHeight(12),
+    paddingHorizontal: scaleWidth(18),
+    height: scaleHeight(60),
+    marginTop: scaleHeight(20),  
   },
   backButton: {
-    width: 30,
-    height: 80,
+    width: scaleWidth(30),
+    height: scaleHeight(80),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    marginTop: -10,
+    marginTop: scaleHeight(-10),
   },
   backArrow: {
-    fontSize: 42,
+    fontSize: scaleFont(42),
     color: "#1c1c1c",
     fontWeight: "700",
-    lineHeight: 42,
+    lineHeight: scaleFont(42),
   },
   headerTitle: {
     flex: 1,
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "600",
     color: "rgba(55, 73, 87, 1)",
     textAlign: "center",
@@ -147,34 +148,34 @@ const styles = StyleSheet.create({
   // Card
   card: {
     backgroundColor: "#fff",
-    borderRadius: 18,
-    padding: 16,
-    minHeight: 340,
+    borderRadius: scaleSize(18),
+    padding: scaleWidth(16),
+    minHeight: scaleHeight(340),
     shadowColor: "#000",
     shadowOpacity: 0.03,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: scaleSize(4),
+    shadowOffset: { width: 0, height: scaleHeight(2) },
     elevation: 2,
-    height: 778,
+    height: scaleHeight(778),
   },
   cardTitle: {
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "400",
-    marginBottom: 8,
+    marginBottom: scaleHeight(8),
     color: "rgba(55, 73, 87, 1)",
     fontFamily: "Inter",
   },
   cardText: {
-    fontSize: 16,
+    fontSize: scaleFont(16),
     color: "rgba(55, 73, 87, 0.68)",
-    lineHeight: 20,
+    lineHeight: scaleFont(20),
     fontFamily: "Inter",
   },
 
   // Bottom Navigation
   bottomNav: {
     width: "100%",
-    height: 65,
+    height: scaleHeight(65),
     backgroundColor: "#f6f6f6",
     flexDirection: "row",
     borderTopWidth: 1,
@@ -190,13 +191,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   tabLabel: {
-    fontSize: 11,
+    fontSize: scaleFont(11),
     color: "#949CA6",
   },
   tabIconImg: {
-    width: 25,
-    height: 25,
-    marginBottom: 3,
+    width: scaleSize(25),
+    height: scaleSize(25),
+    marginBottom: scaleHeight(3),
     resizeMode: "contain",
   },
 });

@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import SwipeBackWrapper from "../../components/SwipeBackWrapper";
+import { scaleWidth, scaleHeight, scaleFont, scaleSize } from "../../utils/responsive";
 
 const OrderDetail = () => {
   const navigation = useNavigation();
@@ -37,7 +38,7 @@ const OrderDetail = () => {
           <Text style={styles.backArrow}>←</Text>
         </TouchableOpacity>
         <Text style={styles.header}>Tracking</Text>
-        <View style={{ width: 24 }} />
+        <View style={{ width: scaleWidth(24) }} />
       </View>
       
       {/* CARD */}
@@ -61,7 +62,7 @@ const OrderDetail = () => {
           {/* Last row: provider info & call */}
           <View style={styles.vendorRow}>
             <Image source={order.providerLogo} style={styles.providerLogo} />
-            <View style={{ flex: 1, marginLeft: 10 }}>
+            <View style={{ flex: 1, marginLeft: scaleWidth(10) }}>
               <Text style={styles.providerName}>{order.provider}</Text>
               <View style={styles.vendorBadges}>
                 <View style={styles.badgeGreen}>
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 14,
+    padding: scaleWidth(14),
     backgroundColor: "rgba(246, 246, 246, 1)",
   },
   // Header row
@@ -143,28 +144,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 12,
-    paddingHorizontal: 18,
-    height: 60,
-    marginTop: 20,  
+    paddingVertical: scaleHeight(12),
+    paddingHorizontal: scaleWidth(18),
+    height: scaleHeight(60),
+    marginTop: scaleHeight(20),  
   },
   backButton: {
-    width: 30,
-    height: 80,
+    width: scaleWidth(30),
+    height: scaleHeight(80),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    marginTop: -10,
+    marginTop: scaleHeight(-10),
   },
   backArrow: {
-    fontSize: 42,
+    fontSize: scaleFont(42),
     color: "#1c1c1c",
     fontWeight: "700",
-    lineHeight: 42,
+    lineHeight: scaleFont(42),
   },
   header: { 
     flex: 1,
-    fontSize: 20, 
+    fontSize: scaleFont(20), 
     fontWeight: "600", 
     color: "rgba(55, 73, 87, 1)", 
     textAlign: "center",
@@ -172,34 +173,34 @@ const styles = StyleSheet.create({
 
   cardOuter: {
     backgroundColor: "rgba(255, 255, 255, 1)",
-    borderRadius: 20,
+    borderRadius: scaleSize(20),
     
     shadowColor: "#AAA",
     shadowOpacity: 0.08,
-    shadowRadius: 8,
+    shadowRadius: scaleSize(8),
     elevation: 3,
     width: "100%",
-    marginBottom: 50,
+    marginBottom: scaleHeight(50),
     
   },
   cardInner: {
-    padding: 18,
-    paddingBottom: 14,
+    padding: scaleWidth(18),
+    paddingBottom: scaleHeight(14),
   },
   row1: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 6,
+    marginBottom: scaleHeight(6),
   },
   imgInCard: {
-    width: 84,
-    height: 80,
-    borderRadius: 20,
+    width: scaleWidth(84),
+    height: scaleHeight(80),
+    borderRadius: scaleSize(20),
     
-    marginRight: 9,
+    marginRight: scaleWidth(9),
   },
   productTitle: {
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "500",
     color: "rgba(20, 32, 50, 1)",
     flex: 1,
@@ -209,98 +210,98 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "rgba(100, 97, 97, 0.11)",
     borderStyle: "dashed",
-    marginVertical: 7,
-    marginTop: 10,
+    marginVertical: scaleHeight(7),
+    marginTop: scaleHeight(10),
   },
-  row2: { marginBottom: 3 },
-  detailLabel: { fontSize: 20, color: "rgba(20, 32, 50, 1)", marginBottom: 1 },
-  detailValue: { fontSize: 20, color: "rgba(20, 32, 50, 1)", fontWeight: "500", marginBottom: 7 },
-  totalLabel: { fontSize: 20, color: "rgba(20, 32, 50, 1)", marginBottom: 1 },
-  totalValue: { fontSize: 20, color: "rgba(20, 32, 50, 1)", fontWeight: "500", marginBottom: 2 },
+  row2: { marginBottom: scaleHeight(3) },
+  detailLabel: { fontSize: scaleFont(20), color: "rgba(20, 32, 50, 1)", marginBottom: scaleHeight(1) },
+  detailValue: { fontSize: scaleFont(20), color: "rgba(20, 32, 50, 1)", fontWeight: "500", marginBottom: scaleHeight(7) },
+  totalLabel: { fontSize: scaleFont(20), color: "rgba(20, 32, 50, 1)", marginBottom: scaleHeight(1) },
+  totalValue: { fontSize: scaleFont(20), color: "rgba(20, 32, 50, 1)", fontWeight: "500", marginBottom: scaleHeight(2) },
 
   vendorRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 6,
+    marginTop: scaleHeight(6),
   },
   providerLogo: {
-    width: 69,
-    height: 69,
-    borderRadius: 17,
+    width: scaleSize(69),
+    height: scaleSize(69),
+    borderRadius: scaleSize(17),
     borderColor: "rgba(184, 254, 34, 1)",
     borderWidth: 1,
  
   },
   providerName: {
-    fontSize: 20,
+    fontSize: scaleFont(20),
     fontWeight: "500",
     color: "rgba(20, 32, 50, 1)",
-    marginBottom: 2,
+    marginBottom: scaleHeight(2),
   },
   vendorBadges: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 4,
-    marginTop: 5,
+    gap: scaleWidth(4),
+    marginTop: scaleHeight(5),
   },
   badgeGreen: {
     backgroundColor: "#E8F5E9",
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 9,
+    paddingHorizontal: scaleWidth(6),
+    paddingVertical: scaleHeight(2),
+    borderRadius: scaleSize(9),
     flexDirection: "row",
     alignItems: "center",
-    marginRight: 2,
+    marginRight: scaleWidth(2),
   },
   badgeText: {
     color: "#2EA77C",
-    fontSize: 11,
+    fontSize: scaleFont(11),
     fontWeight: "700",
   },
   badgeGrey: {
     backgroundColor: "#EEF2F6",
-    paddingHorizontal: 7,
-    paddingVertical: 2,
-    borderRadius: 10,
-    marginLeft: 4,
+    paddingHorizontal: scaleWidth(7),
+    paddingVertical: scaleHeight(2),
+    borderRadius: scaleSize(10),
+    marginLeft: scaleWidth(4),
   },
   badgeTextGrey: {
     color: "#788993",
-    fontSize: 11,
+    fontSize: scaleFont(11),
     fontWeight: "700",
   },
   vendorCallBtn: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    width: scaleSize(48),
+    height: scaleSize(48),
+    borderRadius: scaleSize(24),
     backgroundColor: "#F4F4F6",
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: 10,
+    marginLeft: scaleWidth(10),
   },
-  callBtnIcon: { fontSize: 18 },
+  callBtnIcon: { fontSize: scaleFont(18) },
 
   // Stepper
   stepperOuter: {
-    marginTop: 13,
-    paddingHorizontal: 28,
-    marginBottom: 20,
+    marginTop: scaleHeight(13),
+    paddingHorizontal: scaleWidth(28),
+    marginBottom: scaleHeight(20),
   },
   stepRow: {
     flexDirection: "row",
     alignItems: "center",
-    minHeight: 43,
+    minHeight: scaleHeight(43),
   },
   circle: {
-    width: 23,
-    height: 23,
-    borderRadius: 12,
+    width: scaleSize(23),
+    height: scaleSize(23),
+    borderRadius: scaleSize(12),
     borderWidth: 2,
     borderColor: "#eee",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#fff",
-    marginRight: 12,
+    marginRight: scaleWidth(12),
   },
   circleActive: {
     borderColor: "#FFD485",
@@ -308,49 +309,49 @@ const styles = StyleSheet.create({
   },
   circleTick: {
     color: "rgba(20, 32, 50, 1)",
-    fontSize: 18,
+    fontSize: scaleFont(18),
     fontWeight: "400",
   },
   circleDot: {
     color: "#aaa",
-    fontSize: 17,
-    marginTop: -2,
+    fontSize: scaleFont(17),
+    marginTop: scaleHeight(-2),
   },
   stepMain: {
     flex: 1,
     flexDirection: "column",
-    minHeight: 35,
+    minHeight: scaleHeight(35),
     justifyContent: "center",
   },
-  stepTitle: { fontSize: 15, color: "#22304F" },
-  stepTitleActive: { fontSize: 15, color: "#22304F", fontWeight: "bold" },
-  stepTime: { fontSize: 12, color: "#bcc2c8", marginLeft: 14 },
-  stepTimer: { marginTop: 8, backgroundColor: "#F0F6F5", alignSelf: "flex-start", borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2, },
-  stepTimerText: { color: "#7DBE89", fontSize: 13, fontWeight: "600" },
+  stepTitle: { fontSize: scaleFont(15), color: "#22304F" },
+  stepTitleActive: { fontSize: scaleFont(15), color: "#22304F", fontWeight: "bold" },
+  stepTime: { fontSize: scaleFont(12), color: "#bcc2c8", marginLeft: scaleWidth(14) },
+  stepTimer: { marginTop: scaleHeight(8), backgroundColor: "#F0F6F5", alignSelf: "flex-start", borderRadius: scaleSize(6), paddingHorizontal: scaleWidth(6), paddingVertical: scaleHeight(2), },
+  stepTimerText: { color: "#7DBE89", fontSize: scaleFont(13), fontWeight: "600" },
   verticalLine: {
-    width: 2,
-    height: 29,
+    width: scaleWidth(2),
+    height: scaleHeight(29),
     backgroundColor: "#EEE",
-    marginLeft: 10,
-    marginBottom: 1,
-    marginTop: 1,
-    borderRadius: 2,
+    marginLeft: scaleWidth(10),
+    marginBottom: scaleHeight(1),
+    marginTop: scaleHeight(1),
+    borderRadius: scaleSize(2),
     alignSelf: "flex-start",
   },
 
   // Verify button
   verifyBtn: {
-    marginTop: 10,
-    marginBottom: 20,
-    marginHorizontal: 28,
+    marginTop: scaleHeight(10),
+    marginBottom: scaleHeight(20),
+    marginHorizontal: scaleWidth(28),
     backgroundColor: "#101929",
-    borderRadius: 80,
+    borderRadius: scaleSize(80),
     alignItems: "center",
-    paddingVertical: 18,
+    paddingVertical: scaleHeight(18),
   },
   verifyBtnText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: scaleFont(18),
     fontWeight: "500",
   },
 });
