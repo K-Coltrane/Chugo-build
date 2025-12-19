@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    bottom: 60,
+    bottom: 40,
     width: SCREEN_WIDTH,
     
     backgroundColor: "rgba(0,0,0,0.06)",
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     right: 0,
-    bottom: 40,
+    bottom: 60,
     backgroundColor: "#fff",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
